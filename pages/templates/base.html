@@ -34,13 +34,13 @@
 	</style>
 </head>
 <body>
+	<!-- Hidden AJAX URL -->
+	<input style="display: none;" type="hidden" id="csrf_token" value='{% csrf_token %}'>
+	<!-- wishist link input token -->
+	<input type="hidden" id="ajax-wishlist-url" value="{% url 'cars:toggle_wishlist' %}">
 	{% include 'navbar.html' %}
 
 	{% block body %} {% endblock %}
-	<!-- Hidden AJAX URL -->
-	<input type="hidden" id="csrf_token" value="{% csrf_token %}" class="d-none">
-	<!-- wishist link input token -->
-	<input type="hidden" id="ajax-wishlist-url" value="{% url 'cars:toggle_wishlist' %}">
 
 	<footer id="footer">
 		<div class="container-fluid m-0 p-0">
