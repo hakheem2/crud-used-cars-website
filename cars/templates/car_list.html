@@ -1,0 +1,51 @@
+{% load static %}
+{% load humanize %}
+{% for car in cars %}
+<a href="{% url 'cars:car_detail' slug=car.slug %}" class="product-wrapper col-12 col-md-6 col-lg-4">
+   <div class="product-card">
+      <!-- Car Main Image -->
+      <div class="image pb-4">
+         <img src="{{ car.main_image.url }}" alt="{{ car.name }}" class="img">
+         <div class="wishlist-btn" data-id="{{ car.id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+               viewBox="0 0 24 24" fill="none" stroke="#082c33" 
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+               class="lucide lucide-heart">
+               <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+            </svg>
+         </div>
+      </div>
+
+      <!-- Car Info -->
+      <div class="info pt-2 px-3">
+         <div class="wrapper">
+            <h3 class="name">{{ car.name }}</h3>
+            <h3 class="year">{{ car.year }}</h3>
+         </div>
+
+         <div class="wrapper">
+            <h3 class="price">
+               <span class="sub">Full Price</span> <br>
+               <span class="sale">USD {{ car.sale_price|intcomma }}</span> <br>
+               <span class="full">USD {{ car.full_price|intcomma }}</span>
+            </h3>
+            <h3 class="downpay text-success">
+               <span class="sub">Starts From</span> <br>
+               USD {{ car.down_pay|intcomma }}
+            </h3>
+         </div>
+
+         <hr class="custom-hr" style="border-width: 2px; border-color: var(--bg-gray); border-radius: 5px;">
+
+         <div class="wrapper">
+            <span class="sub">Odometer</span>
+            <h3 class="mileage">{{ car.mileage|intcomma }} kms</h3>
+         </div>
+      </div>
+   </div>
+</a>
+{% empty %}
+   <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+      <p class="text-center ext-capitalise" style="font: var(--title-md);">No cars available at the moment.</p>
+   </div>
+{% endfor %}

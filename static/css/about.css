@@ -1,0 +1,333 @@
+:root {
+	--bg-white: #ffffff;
+	--bg-gray: #F6F6F9;
+   --bg-card: #F4F7FA;
+	--bg-red: #FE3447;
+	--bg-green: #01C616;
+	--bg-gray-dark: #586B7A;
+	--bg-google-rating: #BFC6CE;
+	--bg-gray-hover: #D6DEE8;
+	--bg-red-hover: #C81E2F;
+   --bg-dark-1: #5C7081;
+	--rgb-red: 255, 51, 71;
+	--text-black: #000000;
+	--text-gray: #4d4d4d;
+	--text-dark: #082c33;
+	--text-light: #696969;
+	--text-red: #FE3447;
+   --text-white: #ffffff;
+
+
+	/* titles */
+	--title-md: 700 38px/40px "Urbanist", sans-serif;
+	--title-lg: 700 48px/48px "Urbanist", sans-serif;
+	--title-sm: 600 26px/36px "Urbanist", sans-serif;
+	--title-xm: 600 20px/28px "Urbanist", sans-serif;
+	--inter-title-md: 600 16px/28px "Inter", sans-serif;
+	--inter-title-sm: 500 14px/20px "Inter", sans-serif;
+	--inter-title-xm: 500 12px/16px "Inter", sans-serif;
+
+	/* text */
+	--text-md: 400 16px/26px "Inter", sans-serif;
+	--text-sm: 400 14px/20px "Inter", sans-serif;
+}
+
+
+#banner{
+   width: 100%;
+   position: relative;
+   padding: 20px 2px;
+   display: flex;
+   justify-content: center;
+   border-radius: 30px;
+   background-color: var(--bg-white);
+   overflow-x: hidden;
+}
+
+#banner .head{
+   position: absolute;
+   top: 20px;
+   margin: 0;
+}
+
+#banner .head .title{
+   box-sizing: border-box;
+   width: fit-content;
+   font: var(--title-md);
+   font-size: 28px;
+   color: var(--text-dark);
+   text-align: center;
+   text-transform: capitalize;
+   padding: 20px;
+   border-radius: 30px;
+   background-color: var(--bg-white);
+}
+
+#banner .image .img{
+   width: 100%;
+   border-radius: 30px;
+   height: 70vh;
+   object-fit: cover;
+   object-position: center;
+}
+
+
+
+#about_wrapper{
+   width: 100%;
+   padding: 50px 15px;
+}
+
+#about_wrapper .title{
+   font: var(--title-sm);
+   color: var(--text-dark);
+   padding-bottom: 10px;
+}
+
+#about_wrapper .text{
+   font: var(--text-md);
+   color: var(--text-dark);
+   padding-bottom: 20px;
+}
+
+#about_wrapper .text strong{
+   font-weight: 650;
+}
+
+#about_wrapper .text a{
+   color: var(--text-red);
+   text-decoration: underline;
+}
+
+#about_wrapper .image{
+   width: 100%;
+}
+
+#about_wrapper .image .img{
+   width: 100%;
+   border-radius: 30px;
+   object-fit: cover;
+   object-position: center;
+}
+
+#intro {
+   padding-bottom: 40px;
+}
+
+#intro .image{
+   width: 100%;
+}
+
+#intro .image .img{
+   min-height: 30vh;
+}
+
+
+#whyus .img{
+   height: 30vh;
+}
+
+#whyus .list .lucide-check{
+   stroke: var(--bg-green);
+   margin-right: 10px;
+   width: 20px;
+   height: 20px;
+}
+
+#whyus .list .item_value{
+   color: var(--text-dark);
+   font: var(--text-md);
+   font-weight: 500;
+}
+
+#whyus .list .item_value strong{
+   font-weight: 600;
+}
+
+
+
+#contact{
+   padding: 0 2px 40px;
+}
+
+#contact .contact_wrapper{
+   padding: 20px;
+   border-radius: 30px;
+   background-color: var(--bg-white);
+}
+
+#contact .title{
+   text-align: start;
+   font: var(--title-sm);
+   color: var(--text-dark);
+   overflow: hidden;
+}
+
+#contact .phone{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 30px;
+   padding: 5px 10px;
+   background-color: var(--bg-card);
+}
+
+#contact .phone span{
+   font: var(--text-md);
+   font-weight: 400;
+}
+
+#contact .phone a{
+   font: var(--inter-title-md);
+   font-weight: 500;
+   display: flex;
+   align-items: center;
+}
+
+#contact .phone a svg{
+   stroke: var(--text-dark);
+   width: 15px;
+   height: 15px;
+   fill: var(--text-dark);
+   margin-right: 5px;
+}
+
+#contact .sub_title{
+   text-align: start;
+   font: var(--title-xm);
+   color: var(--text-dark);
+}
+
+#contact .text{
+   text-align: start;
+   font: var(--text-md);
+   color: var(--text-dark);
+}
+
+#contact .hours{
+   text-align: start;
+   font: var(--inter-title-md);
+   color: var(--text-dark);
+}
+
+#contact .map{
+   overflow: hidden;
+   border-radius: 30px;
+   height: 500px;
+}
+
+#contact .map iframe{
+   border-radius: 30px;
+   height: 500px;
+   max-width: 100%;
+   overflow: hidden;
+}
+
+
+
+@media (min-width: 1024px) {
+
+#banner{
+   padding: 100px 20px 20px;
+}
+
+#banner .head{
+   top: 50px;
+}
+
+#banner .head .title{
+   font: var(--title-md);
+   font-size: 34px;
+   padding: 50px 150px;
+   box-shadow: 0 0px 1px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+}
+
+#banner .image{
+   width: 100%;
+}
+
+#banner .image .img{
+   width: 100%;
+   height: 70vh;
+}
+
+
+
+#about_wrapper{
+   width: 60%;
+   margin: 0 auto;
+}
+
+#about_wrapper .title{
+   font: var(--title-md);
+}
+
+
+
+#intro .image .img{
+   height: 70vh;
+}
+
+
+
+#whyus .image{
+   width: 35%;
+   margin-right: 2%;
+}
+
+#whyus .image .img{
+   width: 100%;
+   height: 50vh !important;
+}
+
+#whyus .content{
+   width: 49%;
+   padding-top: 20px;
+}
+
+#about_wrapper .image .img{
+   height: 30vh;
+}
+
+
+#contact{
+   padding: 0 150px 50px;
+}
+
+#contact .contact_wrapper{
+   padding: 20px;
+}
+
+#contact .title{
+   font: var(--title-md);
+   height: fit-content;
+}
+
+#contact .info{
+   width: 30%;
+   padding-right: 20px;
+}   
+
+#contact .sub_title{
+   font: var(--title-xm);
+   font-weight: 600;
+}
+
+#contact .text{
+   font: var(--text-md);
+}
+
+#contact .map{
+   width: 79%;
+   border-radius: 20px;
+   height: 320px;
+   overflow: hidden;
+}
+
+#contact .map iframe{
+   border-radius: 20px;
+   height: 320px;
+   width: 100%;
+}
+
+}

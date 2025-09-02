@@ -1,0 +1,870 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+
+<title>Buy Quality Used Cars Easily | CarMaxAuto</title>
+<meta name="description" content="CarsMaxAutos.com helps you buy and sell used cars quickly and securely. Browse top-quality pre-owned cars, compare prices, and find your perfect vehicle today.">
+<meta name="keywords" content="used cars, buy used cars, sell cars, cars for sale, pre-owned cars, affordable cars, CarMaxAuto">
+<meta name="author" content="CarMaxAuto">
+<meta name="robots" content="index, follow">
+<!-- Canonical -->
+<link rel="canonical" href="https://www.carsmaxautos.com/">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.carsmaxautos.com/">
+<meta property="og:title" content="Buy & Sell Used Cars Easily | CarMaxAuto">
+<meta property="og:description" content="Browse the latest pre-owned cars at CarsMaxAutos.com. Compare prices, check vehicle details, and buy or sell your car with confidence.">
+<meta property="og:site_name" content="CarMaxAuto">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CarMaxAuto">
+<meta name="twitter:creator" content="@CarMaxAuto">
+<meta name="twitter:title" content="Buy & Sell Used Cars Easily | CarMaxAuto">
+<meta name="twitter:description" content="Browse the latest pre-owned cars at CarsMaxAutos.com. Compare prices, check vehicle details, and buy or sell your car with confidence.">
+
+<meta property="og:image" content="https://www.carsmaxautos.com/static/images/brand-logo-2.png">
+<meta name="twitter:image" content="https://www.carsmaxautos.com/static/images/brand-logo-2.png">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebSite",
+"name": "CarMaxAuto",
+"url": "https://www.carsmaxautos.com/",
+"potentialAction": {
+   "@type": "SearchAction",
+   "target": "https://www.carsmaxautos.com/cars/?search={search_term_string}",
+   "query-input": "required name=search_term_string"
+}
+}
+</script>
+
+<!-- Swipper Slide CSS Link -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<!-- custom css styles -->
+<link rel="stylesheet" href="{% static 'css/home.css' %}" style="overflow-x: hidden; width: 100vw;">
+{% endblock %}
+
+
+{% block body %} 
+<main id="body">
+   <section class="px-lg-4 py-lg-4" id="banner">
+      <!-- Background Video -->
+      <video class="banner_video" id="banner_video" autoplay muted loop playsinline preload="none" poster=""></video>
+      <!-- Overlay Content -->
+      <div class="banner_content">
+         <div class="wrapper px-3 px-md-5">
+            <h1 class="ps-1 pb-3 title">
+               Car Max Auto <br> 
+               <span class="subtitle">Your One Stop For Perfect Used Cars in America</span>
+            </h1>
+            <a href="{% url 'cars:car_list' %}" class="btn">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>&nbsp;&nbsp;
+               <span class="text">Show All Cars</span>
+            </a>
+         </div>
+      </div>
+      <div class="google_card d-none d-lg-block text-center">
+            <svg class="gogle_icon mx-auto my-2" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#fff" fill="#fff" width="35" height="35"><title>Google</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+            <span class="review_total">4.8</span>
+            <span class="reviews d-flex">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-half-icon lucide-star-half"><path d="M12 18.338a2.1 2.1 0 0 0-.987.244L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16l2.309-4.679A.53.53 0 0 1 12 2"/></svg>
+            </span>
+            <span class="review_value">Reviews (1,700+)</span> 
+         </div>
+   </section>
+   
+
+   <section id="products">
+      
+      <div class="sec_head">
+         <h3 class="title">🔥Special Car Deals</h3>
+         <a href="{% url 'cars:car_list' %}" class="btn me-md-5">
+            see all
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+         </a>
+      </div>
+      <div class="products_wrapper">
+         <div class="swiper myProductCarousel">
+            <div class="swiper-wrapper">
+
+               {% for car in cars %}
+               <!-- Slide -->
+               <div class="swiper-slide">
+                  <a href="{% url 'cars:car_detail' slug=car.slug %}" class="d-block" style="width: 100%;">
+                     <div class="product-card">
+                        <!-- Car Main Image -->
+                        <div class="image pb-4">
+                           <img src="{{ car.main_image.url }}" alt="{{ car.name }}" class="img">
+                           <div class="wishlist-btn" data-id="{{ car.id }}">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                                 viewBox="0 0 24 24" fill="none" stroke="#082c33" 
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                 class="lucide lucide-heart">
+                                 <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+                              </svg>
+                           </div>
+                        </div>
+
+                        <!-- Car Info -->
+                        <div class="info pt-2 px-3">
+                           <div class="wrapper">
+                              <h3 class="name">{{ car.name }}</h3>
+                              <h3 class="year">{{ car.year }}</h3>
+                           </div>
+
+                           <div class="wrapper">
+                              <h3 class="price">
+                                 <span class="sub">Full Price</span> <br>
+                                 <span class="sale">USD {{ car.sale_price }}</span> <br>
+                                 <span class="full">USD {{ car.full_price }}</span>
+                              </h3>
+                              <h3 class="downpay text-success">
+                                 <span class="sub">Starts From</span> <br>
+                                 USD {{ car.down_pay }}
+                              </h3>
+                           </div>
+
+                           <hr class="custom-hr" style="border-width: 2px; border-color: var(--bg-gray); border-radius: 5px;">
+
+                           <div class="wrapper">
+                              <span class="sub">Odometer</span>
+                              <h3 class="mileage">{{ car.mileage }} kms</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </a>
+               </div>
+               {% empty %}
+                  <div class="w-100 h-100 d-flex justify-content-between align-items-center">
+                     <p class="" style="font: var(--title-md);">No cars available at the moment.</p>
+                  </div>
+               {% endfor %}
+               
+            </div>
+            <!-- pagination / navigation -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+         </div>
+      </div>
+   </section>
+
+   <section class="" id="advert_sec">
+      <div class="row p-0 m-0 d-flex flex-wrap align-items-stretch">
+         <div class="col-12 col-lg-4">
+            <div class="wrapper deals">
+               <img src="{% static 'images/trade-in.jpg' %}" alt="" class="img">
+               <div class="btn_wrapper text-center">
+                  <a href="{% url 'cars:car_list' %}" class="btn"> View Offers </a>
+               </div>
+            </div>
+         </div>
+         <div class="col-12 col-lg-8">
+            <div class="row p-0 m-0 h-100 d-flex flex-wrap align-items-stretch">
+               <div class="col-12 col-lg-6">
+                  <div class="wrapper">
+                     <div class="content_top">
+                        <h3 class="title">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                           150+ Point Inspections
+                        </h3>
+                        <h3 class="title">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                           Mileage Verified
+                        </h3>
+                        <h3 class="title">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                           RTA Certified
+                        </h3>
+                     </div>
+                     <div class="image">
+                        <img src="{% static 'images/car_1.jpg' %}" alt="" class="img">
+                     </div>
+                     <div class="content_bottom">
+                        <p class="text">
+                           We handpick only the finest cars to ensure top quality for our customers.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-12 col-lg-6">
+                  <div class="wrapper">
+                     <div class="content_top">
+                        <h3 class="title" style="background-color: var(--bg-green); width: 60%; color: var(--text-white);">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                           One Year Free Waranty
+                        </h3>
+                     </div>
+                        <div class="image" id="car">
+                           <img src="{% static 'images/car_body.jpg' %}" alt="" class="img">
+                           <img src="{% static 'images/wheel_front.jpg' %}" alt="" class="wheel_front">
+                           <img src="{% static 'images/wheel_back.jpg' %}" alt="" class="wheel_back">
+                        </div>
+                     <div class="content_bottom">
+                        <p class="text">
+                           Every car includes a free one-year warranty
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-lg-12">
+                  <div class="wrapper finance">
+                     <div class="content">
+                        <h3 class="title text-start">
+                        Easy finance options for clients with <span class="text-success">0%</span>
+                        </h3>
+                        <p class="text text-start">
+                           Downpayment with bank finance or lease-to-own options available.
+                        </p>
+                     </div>
+                     <img src="{% static 'images/approval.svg' %}" alt="" class="img-badge">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="products">
+      
+      <div class="sec_head">
+         <h3 class="title">New Inventory</h3>
+         <a href="{% url 'cars:car_list' %}" class="btn me-md-5">
+            see all
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right ms-2"><path d="m9 18 6-6-6-6"/></svg>
+         </a>
+      </div>
+      <div class="products_wrapper">
+         <div class="swiper myProductCarousel">
+            <div class="swiper-wrapper">
+               {% for car in cars %}
+               <!-- Slide -->
+               <div class="swiper-slide">
+                  <a href="{% url 'cars:car_detail' slug=car.slug %}" class="d-block" style="width: 100%;">
+                     <div class="product-card">
+                        <!-- Car Main Image -->
+                        <div class="image pb-4">
+                           <img src="{{ car.main_image.url }}" alt="{{ car.name }}" class="img">
+                           <div class="wishlist-btn" data-id="{{ car.id }}">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                                 viewBox="0 0 24 24" fill="none" stroke="#082c33" 
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                 class="lucide lucide-heart">
+                                 <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+                              </svg>
+                           </div>
+                        </div>
+
+                        <!-- Car Info -->
+                        <div class="info pt-2 px-3">
+                           <div class="wrapper">
+                              <h3 class="name">{{ car.name }}</h3>
+                              <h3 class="year">{{ car.year }}</h3>
+                           </div>
+
+                           <div class="wrapper">
+                              <h3 class="price">
+                                 <span class="sub">Full Price</span> <br>
+                                 <span class="sale">USD {{ car.sale_price }}</span> <br>
+                                 <span class="full">USD {{ car.full_price }}</span>
+                              </h3>
+                              <h3 class="downpay text-success">
+                                 <span class="sub">Starts From</span> <br>
+                                 USD {{ car.down_pay }}
+                              </h3>
+                           </div>
+
+                           <hr class="custom-hr" style="border-width: 2px; border-color: var(--bg-gray); border-radius: 5px;">
+
+                           <div class="wrapper">
+                              <span class="sub">Odometer</span>
+                              <h3 class="mileage">{{ car.mileage }} kms</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </a>
+               </div>
+               {% empty %}
+                  <div class="w-100 h-100 d-flex justify-content-between align-items-center">
+                     <p class="" style="font: var(--title-md);">No cars available at the moment.</p>
+                  </div>
+               {% endfor %}
+            </div>
+            <!-- pagination / navigation -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+         </div>
+      </div>
+   </section>
+
+   <section id="find_car">
+      <!-- Background Video -->
+         <div class="vid_wrapper">
+         <video class="car_vid" id="car_vid" autoplay muted loop playsinline preload="none" poster=""  
+         data-src-sm="{% static 'images/buy-video-mobile.mp4' %}"
+         data-poster-sm="{% static 'images/videoframe_15433.png' %}"
+         data-src-lg="{% static 'images/buy-video.mp4' %}"
+         data-poster-lg="{% static 'images/videoframe_2887.png' %}">
+         </video>
+         <!-- Overlay Content -->
+         <div class="top_content">
+            <div class="wrapper px-3 px-md-5">
+               <h1 class="pb-2 title">Looking for Something Special?</h1>
+               <p class="text">
+                  Don’t worry! If you can’t find the exact car you’re looking for in our current listings, simply tell us your preferences and our dedicated team will work to find the perfect match.
+               </p>
+            </div>
+         </div>
+         <div class="bottom_content">
+            <div class="option_wrapper">
+               <div class="d-flex justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none" stroke-width="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="20" class="lucide lucide-sparkles-icon lucide-sparkles me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+                  <span class="number">01</span>
+               </div>
+               <p class="text">Fill The Details</p>
+            </div>
+            <div class="option_wrapper">
+               <div class="d-flex justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none" stroke-width="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="20" class="lucide lucide-sparkles-icon lucide-sparkles me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+                  <span class="number">02</span>
+               </div>
+               <p class="text">Get a Response</p>
+            </div>
+            <div class="option_wrapper">
+               <div class="d-flex justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none" stroke-width="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="20" class="lucide lucide-sparkles-icon lucide-sparkles me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+                  <span class="number">01</span>
+               </div>
+               <p class="text">Proceed with Payment</p>
+            </div>
+            <div class="btn_wrapper">
+               <a href="" class="btn">Find Car</a>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="whyus">
+      <div class="whyus_wrapper">
+         <div class="sec_head text-center pb-4">
+            <h2 class="title"> Why Choose car Max Auto</h2>
+            <p class="text">Buy used cars in America with a premium experience, great deals, and hassle-free financing for your dream car.</p>
+         </div>
+         <div class="row d-flex justify-content-center flex-wrap align-items-stretch p-0 m-0">
+            <div class="col-12 col-md-9 col-lg-4 px-1 py-2 px-md-3 m-0" >
+               <div class="card_body">
+                  <div class="image order-2 order-lg-1">
+                     <img src="{% static 'images/why_us_1.jpg' %}" alt="">
+                  </div>
+                  <div class="text order-1 order-lg-2">
+                     Easy Financing
+                  </div>
+               </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-4 px-1 py-2 px-md-3 m-0">
+               <div class="card_body">
+                  <div class="image order-2 order-ld-1">
+                     <img src="{% static 'images/why_us_2.jpg' %}" alt="">
+                  </div>
+                  <div class="text order-1 order-lg-2">
+                     Certified used cars
+                  </div>
+               </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-4 px-1 py-2 px-md-3 m-0">
+               <div class="card_body">
+                  <div class="image order-2 order-lg-1">
+                     <img src="{% static 'images/why_us_3.jpg' %}" alt="">
+                  </div>
+                  <div class="text order-1 order-lg-2">
+                     Happy Customers
+                  </div>
+               </div>
+            </div>
+            <div class="sub_text col-12 col-md-10 col-lg-8 text-muted text-start text-lg-center px-1 pt-4 pb-2 m-0">
+               Leading the used car market, our used car showroom in America offers certified, quality-checked vehicles. Experience top customer service at the best car showroom in America.
+            </div>
+            <div class="license col-12 col-lg-10 mx-auto mt-4">
+               <div class="image"><img src="{% static 'images/license.png' %}" alt="" class="img"></div>
+               <div class="body d-flex align-items-center flex-wrap py-md-3 px-2">
+                  <h3 class="title">Certified used cars in USA</h3>
+                  <p class="text">
+                     As the largest used car showroom in USA, we offer a wide range of luxury brands with special deals. All our pre-owned cars are thoroughly inspected and verified. <br>
+                     Easily search by make, model, mileage, and more to find your perfect car.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="showroom">
+      <div class="sec_header pb-3 pb-md-4 ps-3 d-none d-lg-block">
+            <h2 class="title"> Visit Our Showroom</h2>
+      </div>
+      <div class="room_image position-relative">
+         <div class="image d-none d-lg-block"><img src="{% static 'images/showroom.jpg' %}" alt="" class="img"></div>
+         <div class="contact_card">
+            <div class="sec_header pb-3 pb-md-4 d-lg-none">
+               <h2 class="title"> Visit Our Showroom</h2>
+            </div>
+            <img src="{% static 'images/showroom_center.png' %}" alt="" class="card_image mb-3">
+            <div class="body">
+               <div class="wrapper d-flex align-items-center justify-content-between mb-3">
+                  <a href="tel:+13219262853" class="btn">Call Us</a>
+               </div>
+               <div class="wrapper px-2 d-flex align-items-center justify-content-between mb-3">
+                  <span class="item">Phone</span><a href="tel:+13219262853" class="value">+13219262853</a>
+               </div>
+               <div class="wrapper px-2 d-flex align-items-center justify-content-between mb-3">
+                  <span class="item">Working Hours</span><span class="value">Mon-Sun : 9 AM - 10 PM</span>
+               </div>
+               <div class="wrapper px-2 d-flex align-items-center justify-content-between mb-3">
+                  <span class="item">Email</span><a href="mailto:info@carmaxauto.com" class="value">info@carmaxauto.com</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="comments">
+      <div class="sec_head ps-2 pb-3">
+         <h2 class="title">Car Max Auto Reviews</h2>
+      </div>
+      <div class="comments">
+         <div class="swiper commentCarousel">
+            <div class="swiper-wrapper">
+               <!-- Slide -->
+               <div class="swiper-slide">
+                  <div class="comment-card">
+                     <div class="head mb-3">
+                        <div class="d-lg-flex justify-content-between px-2">
+                           <h3 class="name">Tariq</h3>
+                           <p class="rating d-flex align-items-center"> 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              
+                           </p>
+                        </div> 
+                        <div class="d-lg-flex mb-3">
+                           <p class="class d-flex align-items-center me-lg-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Best Cars
+                           </p>
+                           <p class="class d-flex align-items-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Proffessional Team
+                           </p>
+                        </div>
+                     </div>
+                     <div class="body">
+                        <p class="text mb-0 pb-0">
+                           I had a great experience working with Car Max Auto to buy my car. I have gone through 3 car showrooms to get a car and honestly Car Max Auto was the most professional and approachable throughout the entire interaction. From the first conversation to the final handshake, his genuine and transparent communication made the transaction effortless. He was well-prepared, answered all the questions, and ensured every detail was handled with care. I truly appreciated his fairness and how smoothly everything was managed. Buying a car can sometimes feel daunting, but he made it an absolute breeze. I'm glad the car was valued as much as I did. Thank you, Car Max Auto, for such a positive and seamless experience!
+                        </p>
+                        <button class="btn px-1 toogle_comment">
+                           Read More
+                        </button>
+                     </div>
+                  </div>
+               </div>
+               
+               <!-- Slide -->
+               <div class="swiper-slide">
+                  <div class="comment-card">
+                     <div class="head mb-3">
+                        <div class="d-lg-flex justify-content-between px-2">
+                           <h3 class="name">Tariq</h3>
+                           <p class="rating d-flex align-items-center"> 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              
+                           </p>
+                        </div> 
+                        <div class="d-lg-flex mb-3">
+                           <p class="class d-flex align-items-center me-lg-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Best Cars
+                           </p>
+                           <p class="class d-flex align-items-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Proffessional Team
+                           </p>
+                        </div>
+                     </div>
+                     <div class="body">
+                        <p class="text mb-0 pb-0">
+                           I had a great experience working with Car Max Auto to buy my car. I have gone through 3 car showrooms to get a car and honestly Car Max Auto was the most professional and approachable throughout the entire interaction. From the first conversation to the final handshake, his genuine and transparent communication made the transaction effortless. He was well-prepared, answered all the questions, and ensured every detail was handled with care. I truly appreciated his fairness and how smoothly everything was managed. Buying a car can sometimes feel daunting, but he made it an absolute breeze. I'm glad the car was valued as much as I did. Thank you, Car Max Auto, for such a positive and seamless experience!
+                        </p>
+                        <button class="btn px-1 toogle_comment">
+                           Read More
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Slide -->
+               <div class="swiper-slide">
+                  <div class="comment-card">
+                     <div class="head mb-3">
+                        <div class="d-lg-flex justify-content-between px-2">
+                           <h3 class="name">Tariq</h3>
+                           <p class="rating d-flex align-items-center"> 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              
+                           </p>
+                        </div> 
+                        <div class="d-lg-flex mb-3">
+                           <p class="class d-flex align-items-center me-lg-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Best Cars
+                           </p>
+                           <p class="class d-flex align-items-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Proffessional Team
+                           </p>
+                        </div>
+                     </div>
+                     <div class="body">
+                        <p class="text mb-0 pb-0">
+                           I had a great experience working with Car Max Auto to buy my car. I have gone through 3 car showrooms to get a car and honestly Car Max Auto was the most professional and approachable throughout the entire interaction. From the first conversation to the final handshake, his genuine and transparent communication made the transaction effortless. He was well-prepared, answered all the questions, and ensured every detail was handled with care. I truly appreciated his fairness and how smoothly everything was managed. Buying a car can sometimes feel daunting, but he made it an absolute breeze. I'm glad the car was valued as much as I did. Thank you, Car Max Auto, for such a positive and seamless experience!
+                        </p>
+                        <button class="btn px-1 toogle_comment">
+                           Read More
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Slide -->
+               <div class="swiper-slide">
+                  <div class="comment-card">
+                     <div class="head mb-3">
+                        <div class="d-lg-flex justify-content-between px-2">
+                           <h3 class="name">Tariq</h3>
+                           <p class="rating d-flex align-items-center"> 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="gold" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                              
+                           </p>
+                        </div> 
+                        <div class="d-lg-flex mb-3">
+                           <p class="class d-flex align-items-center me-lg-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Best Cars
+                           </p>
+                           <p class="class d-flex align-items-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--bg-red)" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="butt" class="lucide lucide-sparkle-icon lucide-sparkle me-2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>
+                              Proffessional Team
+                           </p>
+                        </div>
+                     </div>
+                     <div class="body">
+                        <p class="text mb-0 pb-0">
+                           I had a great experience working with Car Max Auto to buy my car. I have gone through 3 car showrooms to get a car and honestly Car Max Auto was the most professional and approachable throughout the entire interaction. From the first conversation to the final handshake, his genuine and transparent communication made the transaction effortless. He was well-prepared, answered all the questions, and ensured every detail was handled with care. I truly appreciated his fairness and how smoothly everything was managed. Buying a car can sometimes feel daunting, but he made it an absolute breeze. I'm glad the car was valued as much as I did. Thank you, Car Max Auto, for such a positive and seamless experience!
+                        </p>
+                        <button class="btn px-1 toogle_comment">
+                           Read More
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+
+            <!-- pagination / navigation -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+         </div>
+      </div>
+   </section>
+
+   <section id="articles">
+      <div class="sec_head ps-4"><h2 class="title">Car Articles</h2></div>
+      <div class="swiper myProductCarousel">
+         <div class="swiper-wrapper">
+            
+            <!-- Slide -->
+            <div class="swiper-slide">
+               <a href="{% url 'articles:article_list'}" class="url">
+                  <div class="article_card">
+                     <div class="image"><img src="{% static 'images/1756115016973_0.avif' %}" alt="" class="img mb-3"></div>
+                     <div class="body">
+                        <h3 class="title mb-2">
+                           2025 Range Rover Evoque UAE Review: Pricing, Features, and Total Cost of Ownership
+                        </h3>
+                        <h6 class="date">08/27/25</h6>
+                     </div>
+                  </div>
+               </a>
+            </div>
+
+            <!-- Slide -->
+            <div class="swiper-slide">
+               <a href="{% url 'articles:article_list'}" class="url">
+                  <div class="article_card">
+                     <div class="image"><img src="{% static 'images/1756115016973_0.avif' %}" alt="" class="img mb-3"></div>
+                     <div class="body">
+                        <h3 class="title mb-2">
+                           2025 Range Rover Evoque UAE Review: Pricing, Features, and Total Cost of Ownership
+                        </h3>
+                        <h6 class="date">08/27/25</h6>
+                     </div>
+                  </div>
+               </a>
+            </div>
+
+            <!-- Slide -->
+            <div class="swiper-slide">
+               <a href="{% url 'articles:article_list'}" class="url">
+                  <div class="article_card">
+                     <div class="image"><img src="{% static 'images/1756115016973_0.avif' %}" alt="" class="img mb-3"></div>
+                     <div class="body">
+                        <h3 class="title mb-2">
+                           2025 Range Rover Evoque UAE Review: Pricing, Features, and Total Cost of Ownership
+                        </h3>
+                        <h6 class="date">08/27/25</h6>
+                     </div>
+                  </div>
+               </a>
+            </div>
+
+            <!-- Slide -->
+            <div class="swiper-slide">
+               <a href="{% url 'articles:article_list'}" class="url">
+                  <div class="article_card">
+                     <div class="image"><img src="{% static 'images/1756115016973_0.avif' %}" alt="" class="img mb-3"></div>
+                     <div class="body">
+                        <h3 class="title mb-2">
+                           2025 Range Rover Evoque UAE Review: Pricing, Features, and Total Cost of Ownership
+                        </h3>
+                        <h6 class="date">08/27/25</h6>
+                     </div>
+                  </div>
+               </a>
+            </div>
+
+         </div>
+
+         <!-- pagination / navigation -->
+         <div class="swiper-pagination d-lg-none"></div>
+      </div>
+   </section>
+
+   <section id="faqs">
+      <div class="sec_head ps-2 pb-3"><h2 class="title">Frequently Asked Questions</h2></div>
+      <div class="faq_wrapper">
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">What types of used cars does Car Max Auto offer?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Car Max Auto offers a wide selection of vehicles, including sedans, SUVs, trucks, and hybrids, all suited for different needs and budgets. Whether you are looking for a reliable family car, a fuel-efficient commuter vehicle, or a rugged truck, we provide quality options backed by our trusted inspection process.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Are all the vehicles at Car Max Auto inspected before being sold?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, every vehicle sold by Car Max Auto undergoes a thorough multi-point inspection to ensure safety, performance, and reliability. Our goal is to give you peace of mind, knowing that your car has been carefully checked and meets high U.S. standards for roadworthiness.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Does Car Max Auto provide financing options for buyers in the USA?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Absolutely! We understand that buying a car can be a big investment, so Car Max Auto partners with multiple financing institutions to offer flexible payment plans. Whether you have good credit, bad credit, or no credit history, we work to find a financing solution that fits your needs.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Can I trade in my current vehicle at Car Max Auto?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, Car Max Auto accepts trade-ins, making it easy to upgrade to a newer car. Our team will evaluate your current vehicle, provide a fair market value offer, and apply that amount toward your next purchase, helping reduce your overall costs.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">How does Car Max Auto ensure fair pricing for used cars in the U.S.?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  We base our prices on nationwide market data, vehicle condition, mileage, and demand. At Car Max Auto, transparency is key—we provide upfront pricing without hidden fees. This means you can confidently shop, knowing you are getting a fair and competitive price.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Does Car Max Auto offer warranty or protection plans?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, many of our vehicles come with optional extended warranty and protection plans to give customers added security. These plans can cover mechanical breakdowns, roadside assistance, and even routine maintenance, ensuring you remain protected long after you drive off our lot.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Can I purchase a car from Car Max Auto completely online?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, we provide a seamless online shopping experience for customers across the U.S. You can browse our inventory, apply for financing, and even arrange delivery or pickup—all from the comfort of your home. Buying a car has never been more convenient.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">How do I know which car at Car Max Auto is best for my needs?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Our expert team is here to help you find the perfect car. We consider your budget, lifestyle, and driving preferences to recommend the best options. Whether you need a family SUV, a reliable daily commuter, or a work-ready truck, Car Max Auto ensures you drive away happy.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="contact">
+      <div class="contact_wrapper d-lg-flex justify-content-between">
+         <div class="info mb-lg-0">
+            <div class="wrapper mb-3">
+               <h3 class="title">Contact</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h3 class="phone">
+                  <span>Phone</span>
+                  <a href="tel:+13219262853" class="btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+                     +13219262853
+                  </a>
+               </h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h3 class="sub_title">USA Showroom</h3>
+               <span class="text">
+                  Showroom 17, 18 & 20, Al Asayel Street, Al Quoz Ind 1, Dubai, United Arab Emirates
+               </span>
+            </div>
+            <div class="wrapper mb-4 d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Working Hours</h3> <span class="hours">Sun-Sat : 9 AM - 10 PM</span>
+            </div>
+         </div>
+         <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.2173989588796!2d-79.89787268787936!3d40.470455252247746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834eda18a7f299f%3A0x87711d2910e91e8a!2s7147%20Churchland%20St%2C%20Pittsburgh%2C%20PA%2015206%2C%20USA!5e0!3m2!1sen!2scm!4v1756387161473!5m2!1sen!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         </div>
+      </div>
+   </section>
+
+   <section id="info">
+      <div class="wrapper">
+         <h2 class="title mb-3 mb-lg-4">
+            Quality Used Cars for Sale in the USA
+         </h2>
+         <p class="text">
+            At Car Max Auto, we take pride in offering one of the most extensive selections of used cars for sale across the United States. Whether you’re searching for affordable pre-owned vehicles or exploring options for reliable second-hand cars, our inventory is carefully curated to suit every lifestyle and budget.
+
+            We understand that financing plays a major role in purchasing a vehicle, which is why Car Max Auto provides flexible financing solutions tailored to your needs. From luxury brands like BMW, Mercedes-Benz, Audi, Lexus, and Land Rover to trusted everyday vehicles from Toyota, Honda, Nissan, Ford, Chevrolet, and Jeep, we ensure that every customer finds the perfect match.
+
+            Our mission is to make your car-buying experience seamless, transparent, and satisfying. With Car Max Auto, you can shop with confidence, knowing that every vehicle is inspected for quality and reliability. Discover why drivers across the USA trust Car Max Auto as their go-to destination for used cars, trucks, and SUVs for sale.
+         </p>
+      </div>
+   </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<!-- swiper js -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'js/swiper.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+<script>
+
+$(document).ready(function () {
+
+   var $video = $("#banner_video");
+
+   function setVideo() {
+      if ($(window).width() <= 1024) {
+         // Mobile / tablet
+         $video.attr("poster", "{% static 'images/videoframe_mobile.png' %}");
+         $video.html('<source src="{% static "images/hero_mobile.mp4" %}" type="video/mp4">');
+      } else {
+         // Desktop
+         $video.attr("poster", "{% static 'images/videoframe.jpg' %}");
+         $video.html('<source src="{% static "images/hero_section.mp4" %}" type="video/mp4">');
+      }
+
+      // Reload and play
+      $video[0].load();
+      $video[0].play();
+   }
+
+   // Run once on page load
+   setVideo();
+
+   // Optional: update on resize
+   $(window).on("resize", function () {
+      setVideo();
+   });
+
+});
+
+</script>
+{% endblock %}

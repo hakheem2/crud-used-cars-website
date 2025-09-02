@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+
+<title>Contact CarMaxAuto | Get in Touch</title>
+<meta name="description" content="Contact CarMaxAuto for inquiries, support, or to sell your used car quickly and easily. We’re here to help you find or sell your car.">
+<meta name="keywords" content="contact CarMaxAuto, support, sell car, inquiries">
+<meta name="author" content="CarMaxAuto">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.carsmaxautos.com/contact/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.carsmaxautos.com/contact/">
+<meta property="og:title" content="Contact CarMaxAuto | Get in Touch">
+<meta property="og:description" content="Contact CarMaxAuto for inquiries, support, or to sell your used car quickly and easily.">
+<meta property="og:site_name" content="CarMaxAuto">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CarMaxAuto">
+<meta name="twitter:creator" content="@CarMaxAuto">
+<meta name="twitter:title" content="Contact CarMaxAuto | Get in Touch">
+<meta name="twitter:description" content="Contact CarMaxAuto for inquiries, support, or to sell your used car quickly and easily.">
+
+	<meta property="og:image" content="https://www.carsmaxautos.com/static/images/brand-logo-2.png">
+	<meta name="twitter:image" content="https://www.carsmaxautos.com/static/images/brand-logo-2.png">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "ContactPage",
+"name": "Contact CarMaxAuto",
+"url": "https://www.carsmaxautos.com/contact/"
+}
+</script>
+
+<!-- custom css styles -->
+<link rel="stylesheet" href="{% static 'css/contact.css' %}" style="overflow-x: hidden; width: 100vw;">
+{% endblock %}
+
+
+{% block body %} 
+<main id="body">
+   <section id="banner">
+      <div class="head">
+         <h1 class="title ">Contact - Car Max Auto: <br class="d-md-none"> USA trusted used car dealership</h1>
+      </div>
+      <div class="image"><img src="{% static 'images/showroom_center.png' %}" alt="" class="img"></div>
+   </section>
+   <section id="contact">
+      <h2 class="title mt-4 ps-2">Contact</h2>
+      <div class="wrapper d-flex flex-wrap justify-content-between">
+         <div class="contact_wrapper mb-4 mb-lg-0 order-lg-2">
+            <div class="info mb-3">
+               <h3 class="sub_title">Car Max Auto USA Showroom</h3>
+               <span class="text">
+                  Showroom 17, 18 & 20, Al Asayel Street, Al Quoz Ind 1, Dubai, United Arab Emirates
+               </span>
+            </div>
+            <div class="map">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.2173989588796!2d-79.89787268787936!3d40.470455252247746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834eda18a7f299f%3A0x87711d2910e91e8a!2s7147%20Churchland%20St%2C%20Pittsburgh%2C%20PA%2015206%2C%20USA!5e0!3m2!1sen!2scm!4v1756387161473!5m2!1sen!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+         </div>
+
+         <div class="contact_card order-lg-1">
+            <img src="{% static 'images/showroom_center.png' %}" alt="" class="card_image mb-3">
+            <div class="body">
+               <div class="wrapper d-flex align-items-center justify-content-between mb-3">
+                  <a href="tel:+13219262853" class="btn">Call Us</a>
+               </div>
+               <div class="wrapper px-2 d-flex align-items-center justify-content-between mb-3">
+                  <span class="item">Phone</span><a href="tel:+13219262853" class="value">+13219262853</a>
+               </div>
+               <div class="wrapper px-2 d-flex align-items-center justify-content-between mb-3">
+                  <span class="item">Working Hours</span><span class="value">Mon-Sun : 9 AM - 10 PM</span>
+               </div>
+               <div class="wrapper px-2 d-flex align-items-center justify-content-between mb-3">
+                  <span class="item">Email</span><a href="mailto:info@carmaxauto.com" class="value">info@carmaxauto.com</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+   </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

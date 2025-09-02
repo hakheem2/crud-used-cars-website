@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block head %} 
+
+<title>Used Cars for Sale | CarMaxAuto</title>
+<meta name="description" content="Browse the latest used cars for sale at CarMaxAuto. Filter by make, model, year, and price to find your perfect car quickly and securely.">
+<meta name="keywords" content="used cars, car listings, buy used cars, sell cars, pre-owned cars, affordable cars">
+<meta name="author" content="CarMaxAuto">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.carsmaxautos.com/cars/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.carsmaxautos.com/cars/">
+<meta property="og:title" content="Used Cars for Sale | CarMaxAuto">
+<meta property="og:description" content="Browse the latest used cars for sale at CarMaxAuto. Filter by make, model, year, and price.">
+<meta property="og:site_name" content="CarMaxAuto">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CarMaxAuto">
+<meta name="twitter:creator" content="@CarMaxAuto">
+<meta name="twitter:title" content="Used Cars for Sale | CarMaxAuto">
+<meta name="twitter:description" content="Browse the latest used cars for sale at CarMaxAuto. Filter by make, model, year, and price.">
+
+	<meta property="og:image" content="https://www.carsmaxautos.com/static/images/brand-logo-2.png">
+	<meta name="twitter:image" content="https://www.carsmaxautos.com/static/images/brand-logo-2.png">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "ItemList",
+"name": "Used Cars for Sale",
+"itemListElement": [
+  {
+    "@type": "ListItem",
+    "position": 1,
+    "url": "https://www.carsmaxautos.com/cars/"
+  }
+]
+}
+</script>
+
+<!-- custom css styles -->
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock %}
+
+
+{% block body %} 
+<main id="body" class="d-lg-flex" style="min-height: 90vh; flex-wrap: wrap;">
+   <!-- Page Location Breadcrumb -->
+   <div class="page-location d-flex" style="width: 100%;"> 
+      <a href="{% url 'pages:home' %}">Home&nbsp;&nbsp;›&nbsp;&nbsp;</a>
+      <h1 class="page-seo-name" style="font-size: 0.9rem;">Buy Used Cars</h1>
+   </div>
+
+<section id="filters">
+    <div class="filter-wrapper">
+        <!-- === Filters Card === -->
+        <div class="filter-card mb-3">
+            <div class="head mb-2">
+                <h3 class="title ps-2">Filters</h3>
+                <button class="btn d-none d-lg-block reset-filters" id="reset">Reset All</button>
+                <button class="btn close-filter d-lg-none" id="closeFilters">&times;</button>
+            </div>
+
+            <!-- === Make Filter === -->
+            <div class="wrapper mb-3" data-filter="make">
+                <div class="sub_title ps-2"><h4>Make</h4></div>
+                <div class="filter-dropdown">
+                    <div class="drop-input">
+                        <div class="selected-tags"></div>
+                        <span class="drop-icon">›</span>
+                    </div>
+                    <div class="dropdown-list">
+                        {% for make in makes %}
+                            <div class="dropdown-item" data-value="{{ make|lower }}">{{ make }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- === Body Type Filter === -->
+            <div class="wrapper mb-3" data-filter="body_type">
+                <div class="sub_title ps-2"><h4>Body Type</h4></div>
+                <div class="filter-dropdown">
+                    <div class="drop-input">
+                        <div class="selected-tags"></div>
+                        <span class="drop-icon">›</span>
+                    </div>
+                    <div class="dropdown-list">
+                        {% for body in body_types %}
+                            <div class="dropdown-item" data-value="{{ body|lower }}">{{ body }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-card mb-3">
+            <div class="head mb-2">
+                <h3 class="title ps-2">Price & EMI</h3>
+            </div>
+
+            <!-- === Max Price Filter === -->
+            <div class="wrapper mb-3" data-filter="max_price">
+                <div class="sub_title ps-2"><h4>Max Price</h4></div>
+                <div class="filter-dropdown">
+                    <div class="drop-input">
+                        <div class="selected-tags"></div>
+                        <span class="drop-icon">›</span>
+                    </div>
+                    <div class="dropdown-list">
+                        {% for price in prices %}
+                            <div class="dropdown-item" data-value="{{ price }}">{{price}}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- === Monthly Installments Filter === -->
+            <div class="wrapper mb-3" data-filter="monthly_installment">
+                <div class="sub_title ps-2"><h4>Monthly Installments</h4></div>
+                <div class="filter-dropdown">
+                    <div class="drop-input">
+                        <div class="selected-tags"></div>
+                        <span class="drop-icon">›</span>
+                    </div>
+                    <div class="dropdown-list">
+                        {% for installment in down_pay %}
+                            <div class="dropdown-item" data-value="{{ installment }}">{{ installment }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-card mb-3">
+            <div class="head mb-2">
+                <h3 class="title ps-2">Year & Mileage</h3>
+            </div>
+
+            <!-- === Year Filter === -->
+            <div class="wrapper mb-3" data-filter="year">
+                <div class="sub_title ps-2"><h4>Year</h4></div>
+                <div class="filter-dropdown">
+                    <div class="drop-input">
+                        <div class="selected-tags"></div>
+                        <span class="drop-icon">›</span>
+                    </div>
+                    <div class="dropdown-list">
+                        {% for y in years %}
+                            <div class="dropdown-item" data-value="{{ y }}">{{ y }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- === Max Mileage Filter === -->
+            <div class="wrapper mb-3" data-filter="max_mileage">
+                <div class="sub_title ps-2"><h4>Max Mileage</h4></div>
+                <div class="filter-dropdown">
+                    <div class="drop-input">
+                        <div class="selected-tags"></div>
+                        <span class="drop-icon">›</span>
+                    </div>
+                    <div class="dropdown-list">
+                        {% for mileage in mileage %}
+                            <div class="dropdown-item" data-value="{{ mileage }}">{{ mileage }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-actions d-lg-none">
+                <button class="btn btn-reset reset-filters">Reset All</button>
+                <button class="btn btn-show">Show All</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hidden AJAX URL -->
+<input type="hidden" id="ajax-car-url" value="{% url 'cars:car_list_ajax' %}">
+
+<section id="products" class="ps-3">
+   <div class="sec_head d-flex flex-wrap align-items-stretch justify-content-between mb-4">
+      <div class="btn filter-btn d-lg-none" id="openFilters">
+         <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings2-icon lucide-settings-2"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+      </div>
+      <div class="sort-dropdown">
+         <div class="drop-input">
+            <div class="dropdown-selected">
+               <span id="sort-value">Sort:</span>
+               <span class="text-danger fs-5 d-none" id="reset-sort">&times;</span>
+            </div>
+            <span class="drop-icon">›</span>
+         </div>
+         <div class="dropdown-list">
+            <div class="dropdown-item" data-value="recent">Recenly Added</div>
+            <div class="dropdown-item" data-value="model">Recent Model</div>
+            <div class="dropdown-item" data-value="lowest_price">Low to High Price</div>
+            <div class="dropdown-item" data-value="highest_price">High to Low Price</div>
+            <div class="dropdown-item" data-value="mileage">Lowest Mileage</div>
+         </div>
+         <input type="hidden" name="current-sort" id="current-sort" value="all">
+      </div>
+   </div>
+   <div id="product-list" style="display:block; width: 100%;">
+      <div id="product-grid" class="row p-0 m-0 d-flex">
+         {% include 'car_list.html' %}
+      </div>
+   </div>
+</section>
+
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<script src="{% static 'js/shop.js' %}"></script>
+{% endblock %}

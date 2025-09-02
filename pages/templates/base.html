@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- site icon -->
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32.png' %}">
+	<link rel="icon" type="image/png" sizes="48x48" href="{% static 'images/favicon-48.png' %}">
+	<link rel="icon" type="image/png" sizes="64x64" href="{% static 'images/favicon-64.png' %}">
+	<link rel="icon" type="image/png" sizes="180x180" href="{% static 'images/favicon-180.png' %}">
+	<link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/favicon-192.png' %}">
+	<link rel="icon" type="image/png" sizes="512x512" href="{% static 'images/favicon-512.png' %}">
+
+	<!-- google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+	<!-- boostrap link -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+	<!-- jquery cdn link -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	
+	<!-- css link -->
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	{% block head %} {% endblock %}
+	<style>
+	</style>
+</head>
+<body>
+	{% include 'navbar.html' %}
+
+	{% block body %} {% endblock %}
+	<!-- Hidden AJAX URL -->
+	<input type="hidden" id="csrf_token" value="{% csrf_token %}" class="d-none">
+	<!-- wishist link input token -->
+	<input type="hidden" id="ajax-wishlist-url" value="{% url 'cars:toggle_wishlist' %}">
+
+	<footer id="footer">
+		<div class="container-fluid m-0 p-0">
+			<div class="row p-0 m-0">
+				<div class="col-12 sitelogo p-0 pb-4 m-0">
+					<a href="{% url 'pages:home' %}" class="url">
+						<img src="{% static 'images/brand-logo.png' %}" alt="" class="img" >
+					</a>
+				</div>
+
+				<div class="col-12 col-lg-4 p-0 m-0">
+					<div class="wrapper contact">
+						<div class="social_icons mb-4">
+							<div class="contact pb-4">
+								<h6 class="title">Contact</h6>
+								<a href="tel:+13219262853" class="mb-2">
+									<svg class="" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>&nbsp;&nbsp;
+									+13219262853
+								</a>
+								<a href="mailto:info@carmaxauto.com" class="mb-2">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-at-sign-icon lucide-at-sign"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>&nbsp;&nbsp;
+									info@carmaxauto.com
+								</a>
+								<a href="mailto:info@carmaxauto.com">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>&nbsp;&nbsp;
+									my showroom address
+								</a>
+							</div>
+							<div class="wrapper d-flex flex-wrap align-items-center">
+								<h6 class="title d-block">Social Netorks</h6>
+								<a href="">
+									<svg  role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>TikTok</title><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+								</a>
+								<a href="https://wa.me/+14849889162">
+								<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-lg-4 p-0 mb-2 m-0 d-lg-flex justify-content-start">
+					<div class="wrapper links me-md-5 pe-md-5">
+						<a href="{% url 'pages:home' %}" class="nav_link">home</a>
+						<a href="{% url 'cars:car_list' %}" class="nav_link">buy</a>
+						<a href="{% url 'articles:article_list' %}" class="nav_link">Latest News</a>
+						<a href="{% url 'pages:about' %}" class="nav_link">about us</a>
+					</div>
+					<div class="wrapper links">
+						<a href="{% url 'pages:contact' %}" class="nav_link">contact us</a>
+						<a href="{% url 'pages:privacy_policy' %}" class="nav_link">Privacy Policies</a>
+						<a href="{% url 'pages:terms' %}" class="nav_link">terms and conditions</a>
+						<a href="{% url 'cars:wishlist' %}" class="nav_link">My Favourites</a>
+					</div>
+				</div>
+
+				<div class="col-12 col-lg-4 p-0 m-0">
+					<div class="wrapper c_text">
+						<p class="text">Your one-stop destination for buying and selling used cars across the USA. At Car Max Auto, we specialize in offering a wide range of quality pre-owned vehicles from leading luxury and everyday brands. With a strong presence nationwide, we serve customers from coast to coast, helping them find the perfect car at the best value. We provide exclusive deals on used cars, trucks, and SUVs, with a constantly updated inventory to meet every need. Unlike many other used car dealers, Car Max Auto prioritizes transparency and vehicle reliability. Every used car we sell is thoroughly inspected, verified, and backed by our commitment to quality, so you can drive with complete peace of mind.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="{% static 'js/source.js' %}"></script>
+	<script src="{% static 'js/wishlist.js' %}"></script>
+	<script>
+		$(document).ready(function() {
+			// Get CSRF token from hidden input
+			const csrftoken = $('#csrf_token').val();
+
+			// Setup jQuery AJAX to include CSRF token automatically
+			$.ajaxSetup({
+				beforeSend: function(xhr, settings) {
+						// Only add token for unsafe methods
+						if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+							xhr.setRequestHeader("X-CSRFToken", csrftoken);
+						}
+				}
+			});
+
+			// Example AJAX POST request
+			$('#example-button').click(function() {
+				$.ajax({
+						url: '/your-url/',
+						type: 'POST',
+						data: { key: 'value' },
+						success: function(response) {
+							console.log('Success:', response);
+						},
+						error: function(xhr, status, error) {
+							console.error('Error:', error);
+						}
+				});
+			});
+		});
+	</script>
+	{% block footer %} {% endblock %}
+</body>
+</html>

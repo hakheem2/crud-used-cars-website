@@ -1,0 +1,40 @@
+# =========================================
+# Python / Django
+# =========================================
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Django local stuff
+db.sqlite3
+/media/
+staticfiles/
+
+# =========================================
+# Environment & config
+# =========================================
+.env
+*.log
+
+# =========================================
+# OS-specific
+# =========================================
+.DS_Store
+Thumbs.db
+
+# =========================================
+# IDE / Editor
+# =========================================
+.vscode/
+.idea/
+*.swp
+/shop/management/
+/shop/management/commands/

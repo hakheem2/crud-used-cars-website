@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+<!-- custom css styles -->
+<style>
+
+#banner{
+   width: 100%;
+   position: relative;
+   padding: 20px 2px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+#banner .head{
+   margin: 0;
+}
+
+#banner .head .title{
+   box-sizing: border-box;
+   width: fit-content;
+   font: var(--title-md);
+   font-size: 28px;
+   color: var(--text-dark);
+   text-align: center;
+   text-transform: capitalize;
+   padding: 20px;
+   border-radius: 30px;
+   background-color: var(--bg-white);
+}
+
+#banner .image .img{
+   width: 100%;
+   border-radius: 30px;
+   height: 70vh;
+   object-fit: cover;
+   object-position: center;
+}
+
+
+#terms{
+   padding: 0 20px;
+}
+
+#terms h2{
+   font: var(--title-md);
+   color: var(--text-dark);
+}
+
+#terms h3{
+   font: var(--title-xm);
+   color: var(--text-dark);
+}
+
+#terms p{
+   font: var(--text-md);
+   color: var(--text-dark);
+   padding-bottom: 30px;
+}
+
+
+@media (min-width: 1024px) {
+
+#banner{
+   padding: 40px 0;
+}
+
+#banner .head{
+   top: 50px;
+}
+
+#banner .head .title{
+   font: var(--title-md);
+   font-size: 34px;
+   padding: 40px 150px;
+   box-shadow: 0 0px 1px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+}
+
+
+
+#terms{
+   width: 70%;
+   margin: 0 auto;
+}
+
+}
+</style>
+{% endblock %}
+
+
+{% block body %} 
+<main id="body">
+   <section id="banner">
+      <div class="head">
+         <h1 class="title ">Terms and Condition</h1>
+      </div>
+   </section>
+   <section id="terms" class="py-5">
+      <h2>TERMS OF USE</h2>
+
+      <p>
+      Thank you for visiting our Digital Platform. <strong>Car Max Auto</strong> is a company incorporated in the United States and licensed as an e-commerce service provider for used vehicles. We provide the <strong>Car Max Auto Website</strong>, Mobile Website, and applications for mobile as well as tablet devices (individually and collectively the "Digital Platform"). Our Digital Platform provides you with a unique opportunity to connect with buyers, sellers, and visitors and to obtain information pertaining to <strong>used cars in the USA</strong> listed on the Digital Platform. 
+      </p>
+
+      <p>
+      Shopping for a <strong>certified pre-owned vehicle</strong> is much easier now than ever before. The Digital Platform offers you the opportunity to learn about us, <strong>schedule a test drive</strong>, get details on the vehicles, compare <strong>top car brands in the US</strong> such as Ford, Chevrolet, Toyota, Honda, Tesla, Jeep, GMC, Dodge, BMW, and Mercedes-Benz, or even learn about warranty and service options for your next vehicle.
+      </p>
+
+      <p>
+      These terms and conditions (the "Terms") govern, set out, and regulate your use of and visit to the Digital Platform. For the purpose of these Terms and wherever the context so requires, the terms "user", "you" and "your" shall mean and include natural or legal persons who have agreed to visit the Digital Platform, register on the Digital Platform, or use the Digital Platform in any manner whatsoever, including browsing, viewing content, posting comments, or responding to advertisements.
+      </p>
+
+      <p>
+      By visiting, navigating, browsing, downloading, commenting, saving, uploading, accessing, or communicating in any form or using the Digital Platform you will automatically be considered a user which requires the full and complete acceptance of each and every provision included within these Terms. If you do not agree to these Terms, you may not access or otherwise use the Digital Platform.
+      </p>
+
+      <p>
+      In addition to these Terms, you will find other policies such as our <strong>privacy policy</strong>, <strong>cookie policy</strong>, and <strong>copyright notices</strong> on the Digital Platform (collectively, the "Legal Policies"). Car Max Auto reserves the right, at its sole discretion and at any time, to make changes to these Terms and Legal Policies concerning the use of the Digital Platform. Your continued use of the Digital Platform following such changes constitutes your acceptance of the updated Terms and Legal Policies.
+      </p>
+
+      <h2>ABOUT DIGITAL PLATFORM AND WAIVER OF RESPONSIBILITY</h2>
+
+      <p>
+      The Digital Platform is a digital marketplace that allows users, visitors, affiliates, and service providers to browse, view, and connect regarding <strong>used cars in the USA</strong>. 
+      </p>
+
+      <p>
+      Any information, images, videos, or guidance that we provide as part of our services (such as car images, product details, or specifications) are solely informational. Vehicle images may not always represent the exact car listed, and we do not guarantee the accuracy, legality, or completeness of third-party listings or content.
+      </p>
+
+      <p>
+      Car Max Auto and its support team have no absolute control over and do not guarantee: the existence, quality, legality, merchantability, or safety of vehicles displayed; the truth or accuracy of user listings; or that a transaction between buyers and sellers will be completed. Car Max Auto shall not be held liable for disputes, delays, or claims that may arise between users.
+      </p>
+
+      <h3>WARRANTY</h3>
+
+      <p>
+      You accept and undertake to buy <strong>warranty coverage</strong> for your vehicle from <strong>third-party suppliers</strong>. Car Max Auto shall not in any manner be responsible or liable for warranty claims including claims for rejection of warranties by third parties. The User agrees and acknowledges that Car Max Auto is not liable if the warranty provider refuses or fails to issue a policy.
+      </p>
+
+      <h3>SERVICE CONTRACT</h3>
+
+      <p>
+      Vehicle owners can opt to acquire <strong>service contract coverage</strong> for their vehicles from third-party suppliers listed on the Digital Platform. Car Max Auto shall not be responsible if a third-party service provider rejects or cancels contract coverage.
+      </p>
+
+      <h3>SERVICE HISTORY</h3>
+
+      <p>
+      Vehicle owners can request a <strong>service history report</strong> for their used cars (Ford, Chevrolet, Toyota, Honda, Tesla, etc.) from authorized dealerships. Car Max Auto may act as a channel to share such information but does not guarantee accuracy or timelines of delivery. Users agree that information provided is accurate and that Car Max Auto shall not be held liable for dealership errors, missing data, or delays.
+      </p>
+
+      <h3>OFFERS AND DEALS</h3>
+
+      <p>
+      From time to time, Car Max Auto may post <strong>special offers or deals</strong> related to used cars or automotive services. These offers may be posted by us or third-party suppliers. Car Max Auto is not responsible for the fulfillment of services or goods provided by third-party suppliers.
+      </p>
+
+      <h3>SMART TENDERS</h3>
+
+      <p>
+      Smart Tenders is a service covering several segments dealing with <strong>car services and repairs</strong> including oil changes, body work, detailing, tinting, insurance, and more. Users may post service requests on the Digital Platform, and suppliers may respond with offers. Users are responsible for carefully reviewing supplier offers. Car Max Auto does not guarantee the quality, pricing, or accuracy of offers made by third-party suppliers.
+      </p>
+
+      <h3>CONTACT</h3>
+
+      <p>
+      All communication with Car Max Auto must be made via email at <a href="mailto:info@carmaxauto.com">info@carmaxauto.com</a>. Any other method of communication or agreement shall be deemed void.
+      </p>
+
+      <h3>GOVERNING LAW & DISPUTES</h3>
+
+      <p>
+      These Terms shall be governed by and construed in accordance with the laws of the United States. Any disputes arising out of or related to the use of the Digital Platform shall be subject to binding arbitration under U.S. law.
+      </p>
+
+   </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

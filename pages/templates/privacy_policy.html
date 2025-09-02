@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+<!-- custom css styles -->
+<style>
+#banner{
+   width: 100%;
+   position: relative;
+   padding: 20px 2px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+#banner .head{
+   margin: 0;
+}
+
+#banner .head .title{
+   box-sizing: border-box;
+   width: fit-content;
+   font: var(--title-md);
+   font-size: 28px;
+   color: var(--text-dark);
+   text-align: center;
+   text-transform: capitalize;
+   padding: 20px;
+   border-radius: 30px;
+   background-color: var(--bg-white);
+}
+
+#banner .image .img{
+   width: 100%;
+   border-radius: 30px;
+   height: 70vh;
+   object-fit: cover;
+   object-position: center;
+}
+
+
+#terms{
+   padding: 0 20px;
+}
+
+#terms h1{
+   font: var(--title-md);
+   color: var(--text-dark);
+}
+
+#terms h2{
+   font: var(--title-xm);
+   color: var(--text-dark);
+}
+
+#terms p{
+   font: var(--text-md);
+   color: var(--text-dark);
+   padding-bottom: 20px;
+}
+
+#terms ul{
+   padding-bottom: 30px;
+}
+
+#terms li{
+   font: var(--text-md);
+   color: var(--text-dark);
+}
+
+
+@media (min-width: 1024px) {
+
+#banner{
+   padding: 40px 0;
+}
+
+#banner .head{
+   top: 50px;
+}
+
+#banner .head .title{
+   font: var(--title-md);
+   font-size: 34px;
+   padding: 40px 150px;
+   box-shadow: 0 0px 1px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+}
+
+
+#terms{
+   width: 70%;
+   margin: 0 auto;
+}
+
+}
+</style>
+{% endblock %}
+
+
+{% block body %} 
+<main id="body">
+   <section id="banner">
+      <div class="head">
+         <h1 class="title ">Data Privacy and Cookie Privacy</h1>
+      </div>
+   </section>
+   <section id="terms" class="py-5">
+      <h1>Car Max Auto – Data Privacy Statement</h1>
+
+      <p>
+         This Data Privacy Statement applies to all Car Max Auto digital platforms, including but not limited to: the Car Max Auto Website, Mobile Website, and Mobile Applications (collectively referred to as the “Digital Platform”).
+      </p>
+
+      <p>
+         The Digital Platform is solely owned and operated by Car Max Auto, USA. By accessing our Digital Platform, you agree to the terms of this Privacy Statement. We are committed to protecting your privacy and handling your personal data responsibly, in line with applicable U.S. data protection laws.
+      </p>
+
+      <h2>1. Information We Collect</h2>
+
+      <h3>a. Log Data</h3>
+      <p>When you visit our Digital Platform, our servers may automatically collect standard data provided by your browser, including:</p>
+      <ul>
+         <li>IP address</li>
+         <li>Browser type and version</li>
+         <li>Pages visited</li>
+         <li>Date and time of visit</li>
+         <li>Other technical details</li>
+      </ul>
+
+      <h3>b. Device Data</h3>
+      <p>We may collect information about the device you use, such as:</p>
+      <ul>
+         <li>Device type and operating system</li>
+         <li>Unique device identifiers</li>
+         <li>Device settings</li>
+         <li>Geo-location data (depending on your settings)</li>
+      </ul>
+
+      <h3>c. Personal Data</h3>
+      <p>Personal information that may identify you includes, but is not limited to:</p>
+      <ul>
+         <li>Full name</li>
+         <li>Email address</li>
+         <li>Phone number</li>
+         <li>Home or mailing address</li>
+         <li>Payment details (where applicable)</li>
+      </ul>
+
+      <p>We collect personal data in the following ways:</p>
+      <ul>
+         <li>Directly: when you register, subscribe, or contact us</li>
+         <li>Indirectly: through our technology or trusted partners</li>
+         <li>Social Media: when you engage with our official accounts (e.g., Facebook, Instagram, Twitter)</li>
+      </ul>
+
+      <h2>2. Legal Basis for Processing Data</h2>
+
+      <p>We process your personal data lawfully, fairly, and transparently, based on:</p>
+      <ul>
+         <li>Contractual necessity: to provide the services you request</li>
+         <li>Legitimate interests: including research, marketing, security, and fraud prevention</li>
+         <li>Consent: when you explicitly agree to specific processing</li>
+         <li>Legal obligations: to comply with applicable laws and regulations</li>
+      </ul>
+
+      <h2>3. Use of Information</h2>
+
+      <p>We may use your data to:</p>
+      <ul>
+         <li>Personalize your experience on our Digital Platform</li>
+         <li>Provide access to our services and applications</li>
+         <li>Communicate with you regarding inquiries, updates, or support</li>
+         <li>Maintain internal business records</li>
+         <li>Conduct analytics, research, and business improvements</li>
+         <li>Deliver marketing and promotional content related to used cars in the USA</li>
+         <li>Comply with legal and regulatory requirements</li>
+      </ul>
+
+      <p>We may disclose your data to:</p>
+      <ul>
+         <li>Trusted third-party service providers</li>
+         <li>Contractual partners assisting in service delivery</li>
+         <li>Courts, regulators, or law enforcement (where legally required)</li>
+      </ul>
+
+      <h2>4. Data Retention and Security</h2>
+
+      <ul>
+         <li>We retain personal data only as long as necessary for the purposes outlined above.</li>
+         <li>We implement industry-standard measures to protect data from unauthorized access, loss, or misuse.</li>
+         <li>While we strive for the highest level of protection, no electronic transmission or storage is 100% secure.</li>
+      </ul>
+
+      <h2>5. Cookies</h2>
+
+      <p>Our Digital Platform uses cookies to enhance your browsing experience. For more details, please refer to our Cookie Policy.</p>
+
+      <h2>6. Data Protection for Minors</h2>
+
+      <p>The Digital Platform is intended for users 18 years and older. We do not knowingly collect personal information from individuals under 18.</p>
+
+      <h2>7. Your Rights</h2>
+
+      <p>You have the right to:</p>
+      <ul>
+         <li>Access and obtain a copy of your personal data</li>
+         <li>Correct inaccurate or incomplete information</li>
+         <li>Request deletion of your data</li>
+         <li>Withdraw consent at any time (where processing is based on consent)</li>
+         <li>Request transfer of your data to another provider</li>
+         <li>Opt-out of marketing communications</li>
+      </ul>
+
+      <p>All requests can be submitted by contacting us at <a href="mailto:info@carmaxauto.com">info@carmaxauto.com</a>.</p>
+
+      <h2>8. Third-Party Links</h2>
+
+      <p>Our Digital Platform may contain links to third-party websites. Please note:</p>
+      <ul>
+         <li>Their privacy policies apply once you leave our platform.</li>
+         <li>We do not endorse or take responsibility for the practices of external websites.</li>
+      </ul>
+
+      <h2>9. Amendments</h2>
+
+      <p>We may update this Privacy Statement from time to time. Any changes will be posted here, with the “Last Updated” date modified accordingly.</p>
+
+      <p>Effective Date: February 2021</p>
+
+   </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

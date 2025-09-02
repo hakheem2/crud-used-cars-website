@@ -1,0 +1,505 @@
+:root {
+	--bg-white: #ffffff;
+	--bg-gray: #F6F6F9;
+   --bg-card: #F4F7FA;
+	--bg-red: #FE3447;
+	--bg-green: #01C616;
+	--bg-gray-dark: #586B7A;
+	--bg-google-rating: #BFC6CE;
+	--bg-gray-hover: #D6DEE8;
+	--bg-red-hover: #C81E2F;
+   --bg-dark-1: #5C7081;
+	--rgb-red: 255, 51, 71;
+	--text-black: #000000;
+	--text-gray: #4d4d4d;
+	--text-dark: #082c33;
+	--text-light: #696969;
+	--text-red: #FE3447;
+   --text-white: #ffffff;
+
+
+	/* titles */
+	--title-md: 700 38px/40px "Urbanist", sans-serif;
+	--title-lg: 700 48px/48px "Urbanist", sans-serif;
+	--title-sm: 600 26px/36px "Urbanist", sans-serif;
+	--title-xm: 600 20px/28px "Urbanist", sans-serif;
+	--inter-title-md: 600 16px/28px "Inter", sans-serif;
+	--inter-title-sm: 500 14px/20px "Inter", sans-serif;
+	--inter-title-xm: 500 12px/16px "Inter", sans-serif;
+
+	/* text */
+	--text-md: 400 16px/26px "Inter", sans-serif;
+	--text-sm: 400 14px/20px "Inter", sans-serif;
+}
+
+
+/* ========= general styling ========= */
+/* 1. Use a better box-sizing model */
+*, *::before, *::after {
+	box-sizing: border-box !important;
+}
+
+/* 2. Remove default margin & padding from everything */
+* {
+	margin: 0;
+	padding: 0;
+	font-size: var(--text-fs);
+}
+
+/* 3. Set core body defaults */
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	padding-top: 100px;
+	min-height: 100vh;
+	width: 100vw;
+	overflow-x: hidden !important;
+	background-color: var(--bg-gray);
+}
+
+#body{
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	overflow-x: hidden !important;
+}
+
+/* 4. Remove list styles */
+ul, ol {
+	list-style: none;
+}
+
+/* 5. Remove link styles */
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* 6. Media defaults */
+img, picture, video, canvas, svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* 7. Inherit fonts for form elements */
+input, button, textarea, select {
+	font: inherit;
+}
+
+/* 8. Reset buttons */
+button {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+/* 9. Remove textarea resize */
+textarea {
+	resize: vertical;
+}
+
+/* 10. Remove fieldset styling */
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* 11. Table reset */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 12. Remove Bootstrap box-shadows & outlines globally */
+
+/* 13. Remove Bootstrap focus styles */
+:focus,
+:focus-visible,
+:focus-within {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/* 14. Optional: disable Bootstrap border-radius too */
+.btn,
+.form-control,
+input,
+select,
+textarea {
+	box-shadow: none !important;
+	outline: none !important;
+	border: none;
+}
+
+.carousel-indicators button {
+	height: 5px !important;
+	z-index: 699;
+	border: 1px solid var(--theme-color-4) !important;
+}
+
+
+
+.page-location {
+   padding: 20px;
+   flex-wrap: wrap;
+}
+
+.page-location a,
+.page-location h1 {
+   font: var(--text-md);
+	font-size: 15px;
+   color: var(--text-light);
+}
+
+.page-location svg{
+	overflow: hidden;
+}
+
+
+/* Entire scrollbar */
+::-webkit-scrollbar {
+  width: 4px;   /* make it thinner */
+  height: 4px;  /* for horizontal scroll */
+}
+
+@media (max-width: 1024px) {
+	::-webkit-scrollbar {
+	width: 1px;   /* make it thinner */
+	height: 1px;  /* for horizontal scroll */
+	}
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;  /* light gray */
+}
+
+/* Scrollbar handle (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #888;     /* darker gray */
+  border-radius: 4px;   /* rounded edges */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+/* 15. Optional: disable animations for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+
+
+#header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: stretch;
+	align-items: center;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	overflow-x: hidden;
+	background-color: var(--bg-white);
+	z-index: 899;
+}
+
+#header .navbar {
+	width: 100%;
+}
+
+#header .nav_menu{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+#header .nav_link{
+	padding: 15px;
+	border-radius: 25px;
+	font: var(--title-xm);
+	text-transform: capitalize;
+}
+
+#header .nav_menu .nav_link:hover, #header #sidebar .nav_link:hover{
+	background-color: var(--bg-gray-hover);
+}
+
+#header .nav_link.active{
+	background-color: rgba(var(--rgb-red), 0.1);
+	color: var(--text-red);
+}
+
+#header .btn {
+	background-color: var(--bg-gray);
+	width: 50px;
+	height: 50px;
+	border-radius: 35%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px;
+}
+
+#header .btn:hover{
+	background-color: var(--bg-gray-hover);
+}
+
+#header #call .icon,
+#header #wishlist_btn .icon {
+	stroke: var(--bg-red);
+	fill: var(--bg-red);
+}
+
+
+#sidebar{
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: -101%;
+	background-color: var(--bg-white);
+	z-index: 999;
+	transition: all 0.3s ease;
+}
+
+#sidebar.open{
+	left: 0;
+}
+
+#sidebar .sidebar_con{
+	width: inherit;
+	height: 100%;
+	overflow-y: scroll;
+
+}
+
+#sidebar .side_menu {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;
+}
+
+#sidebar .side_menu .nav_link{
+	margin: 10px 0;
+	border-radius: 20px;
+	font-size: 18px;
+}
+
+#sidebar .social_icons{
+	background-color: var(--bg-gray-hover);
+	border-radius: 20px;
+}
+
+#sidebar .social_icons .title{
+	color: var(--text-light);
+	font: var(--inter-title-xm);
+	width: 100%;
+}
+
+#sidebar .social_icons a{
+	color: var(--text-black);
+	font: var(--inter-title-sm);
+	display: flex;
+	align-items: center;
+}
+
+#sidebar .social_icons .wrapper a{
+	width: 50px;
+	height: 50px;
+	background-color: var(--bg-white);
+	border-radius: 50%;
+	margin-right: 10px;
+}
+#sidebar .social_icons .wrapper a svg{
+	width: 22px;
+	margin: 0 auto;
+}
+
+
+
+
+.product-card{
+	width: 100%;
+	background-color: var(--bg-white);
+	padding: 3px;
+	border-radius: 20px;
+}
+
+.product-card:hover h3.name{
+	color: var(--text-red) !important;
+}
+
+.product-card .image{
+	width: 100%;
+	border-radius: 20px;
+	position: relative;
+}
+
+.product-card .image .img{
+	width: 100%;
+	height: 240px;
+	border-radius: 20px;
+}
+
+.product-card .image .wishlist-btn{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: var(--bg-white);
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+
+.product-card .image .wishlist-btn svg{
+	width: 25px;
+	height: 25px;
+	stroke-width: 1.5;
+	transition: all 0.3s ease;
+}
+
+.product-card .wrapper{
+	display: flex;
+	align-items: top;
+	justify-content: space-between;
+}
+.product-card .wrapper h3{
+	font: var(--inter-title-md);
+	color: var(--text-dark)
+}
+.product-card .wrapper h3.name{
+	font: var(--inter-title-md);
+	font-size: 18px;
+	color: var(--text-dark);
+	transition: all 0.2s ease;
+}
+.product-card .wrapper h3.price{
+	margin: 0;
+}
+.product-card .wrapper h3 .full{
+	font: var(--inter-title-xm);
+	font-weight: 400;
+	color: var(--text-light);
+	text-decoration: line-through;
+	font-style: italic;
+}
+
+.product-card .wrapper .sub{
+	font: var(--inter-title-xm);
+	color: var(--text-light)
+}
+
+
+
+#footer{
+   border-radius: 50px 50px 0 0;
+   background-color: #121219;
+}
+
+#footer .row{
+   padding-top: 30px !important;
+   width: 80%;
+   margin: 0 auto !important;
+   overflow-x: hidden;
+}
+
+#footer .social_icons{
+	border-radius: 20px;
+}
+
+#footer .social_icons .title{
+	color: var(--text-light);
+	font: var(--text-sm);
+	width: 100%;
+}
+
+#footer .social_icons a{
+	color: var(--text-white);
+	font: var(--text-sm);
+	display: flex;
+	align-items: center;
+}
+
+#footer .social_icons .wrapper a{
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	margin-right: 10px;
+   background-color: #35353B;
+}
+#footer .social_icons .wrapper a svg{
+	width: 18px;
+   fill: var(--text-white);
+	margin: 0 auto;
+}
+
+#footer .wrapper .nav_link{
+   display: block;
+   color: var(--text-white);
+   margin: 5px 0;
+   padding: 10px 0;
+   font: var(--text-sm);
+   transition: 0.2s ease;
+}
+
+#footer .wrapper .nav_link:hover{
+   text-decoration: underline;
+}
+
+#footer .c_text .text{
+   font: var(--text-sm);
+   color: rgba(225, 225, 225, 0.7);
+}
+
+
+
+@media (min-width: 1024px) {
+	#header {
+		padding: 0 5%;
+	}
+	#header .nav_brand .img{
+		width: 200px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	#header .nav_link{
+		padding: 10px 15px;
+	}
+
+	.product-card .img{
+		height: 300px;
+	}
+
+
+
+	#footer .row{
+      padding: 60px 0 !important;
+   }
+
+   #footer .sitelogo .img{
+      width: 220px;
+   }
+}

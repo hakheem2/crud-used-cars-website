@@ -1,0 +1,975 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %} 
+
+<title>{{ car.make }} {{ car.model }} ({{ car.year }}) | CarMaxAuto</title>
+<meta name="description" content="Buy {{ car.make }} {{ car.model }} ({{ car.year }}) at CarMaxAuto. Check price, specifications, and contact the seller today.">
+<meta name="keywords" content="{{ car.make }}, {{ car.model }}, used car, cars for sale">
+<meta name="author" content="CarMaxAuto">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.carsmaxautos.com/buy-used-cars/{{ car.slug }}/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://www.carsmaxautos.com/buy-used-cars/{{ car.slug }}/">
+<meta property="og:title" content="{{ car.make }} {{ car.model }} ({{ car.year }}) | CarMaxAuto">
+<meta property="og:description" content="Buy {{ car.make }} {{ car.model }} ({{ car.year }}) at CarMaxAuto. Check price, specifications, and contact the seller today.">
+<meta property="og:image" content="{{ car.image.url }}">
+<meta property="og:site_name" content="CarMaxAuto">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CarMaxAuto">
+<meta name="twitter:creator" content="@CarMaxAuto">
+<meta name="twitter:title" content="{{ car.make }} {{ car.model }} ({{ car.year }}) | CarMaxAuto">
+<meta name="twitter:description" content="Buy {{ car.make }} {{ car.model }} ({{ car.year }}) at CarMaxAuto. Check price, specifications, and contact the seller today.">
+<meta name="twitter:image" content="{{ car.image.url }}">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Product",
+"name": "{{ car.make }} {{ car.model }}",
+"image": "{{ car.image.url }}",
+"description": "Buy {{ car.make }} {{ car.model }} ({{ car.year }}) at CarMaxAuto. Check price and specifications.",
+"brand": {
+  "@type": "Brand",
+  "name": "{{ car.make }}"
+},
+"offers": {
+  "@type": "Offer",
+  "url": "https://www.carsmaxautos.com/buy-used-cars/{{ car.slug }}/",
+  "priceCurrency": "USD",
+  "price": "{{ car.sale_price }}",
+  "availability": "https://schema.org/InStock"
+}
+}
+</script>
+
+<!-- Swipper Slide CSS Link -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<!-- custom css styles -->
+<link rel="stylesheet" href="{% static 'css/car_page.css' %}">
+{% endblock %}
+
+
+{% block body %} 
+<main id="body" style="min-height: 90vh; flex-wrap: wrap;">
+   <!-- Page Location Breadcrumb -->
+   <div class="page-location d-flex pb-3"> 
+      <a href="{% url 'pages:home' %}">Home&nbsp;&nbsp;›&nbsp;&nbsp;</a>
+      <a href="{% url 'cars:car_list' %}">Buy Used Cars&nbsp;&nbsp;›&nbsp;&nbsp;</a>
+      <h1 class="page-seo-name m-0">{{ car.name }}</h1>
+   </div>
+
+   <section id="car_detail">
+
+      <div class="row1" id="row1">
+         <div class="image-wrapper">
+            <!-- main image -->
+            <div class="main-image mb-2">
+               <img src="{{ car.main_image.url }}" alt="{{ car.name }}" class="img">
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery swiper galleryCarousel">
+               <div class="swiper-wrapper">
+                  {% for image in car.gallery_images.all %}
+                     <div class="swiper-slide gallery-img">
+                        <img src="{{ image.image.url }}" alt="{{ car.name }}" class="img">
+                     </div>
+                  {% endfor %}
+               </div>
+               <div class="swiper-button-prev"></div>
+               <div class="swiper-button-next"></div>
+            </div>
+         </div>
+
+         <!-- mobile car info -->
+         <div class="car-info d-lg-none mb-3">
+            <div class="wrapper mb-4">
+               <div class="name-con d-flex justify-content-between align-items-center">
+                  <h2 class="name p-0 m-0">{{ car.name }}</h2><br>
+                  <div class="wishlist-btn" data-id="{{ car.id }}">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#082c33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                  </div>
+               </div>
+               <h3 class="stock-no">Stock no: {{ car.stock_no }}</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h2 class="price o-0 m-0">USD {{ car.sale_price|intcomma }}</h2>
+               <h3 class="downpay m-0">USD {{ car.down_pay|intcomma }}/Month</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <div class="views-con d-flex align-items-center">
+                  <h5 class="views d-flex align-items-center m-0">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="var(--text-red)" stroke="var(--text-white)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                     <span class="view-no">&nbsp;13&nbsp;</span>
+                     People&nbsp;
+                  </h5>
+                  are viewing this right now
+               </div>
+            </div>
+            <div class="wrapper actions">
+               <button class="btn mb-3" id="book-drive">Book a test drive</button>
+               <div class="urls d-flex justify-content-between">
+                  <a href="" class="btn url" id="call">Call Us</a>
+                  <a href="" class="btn url" id="buy">Buy this Car</a>
+               </div>
+            </div>
+         </div>
+
+         <!-- description / overview -->
+         <div class="describtion mb-3">
+            <div class="car-overview mb-4">
+               <div class="head mb-4 ps-2">
+                  <h2 class="title">Car Overview</h2>
+               </div>
+               <div class="wrapper d-flex justify-content-between align-items-stretch flex-wrap">
+
+                  <!-- Year -->
+                  <div class="overview-card d-flex d-lg-block justify-content-start align-items-center flex-wrap mb-3 mb-lg-0">
+                     <div class="icon green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                     </div>
+                     <div class="content">
+                        <h3 class="title">Year</h3>
+                        <h4 class="sub_title">{{ car.year }}</h4>
+                     </div>
+                  </div>
+
+                  <!-- Mileage -->
+                  <div class="overview-card d-flex d-lg-block justify-content-start align-items-center flex-wrap mb-3 mb-lg-0">
+                     <div class="icon green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge-icon lucide-gauge"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                     </div>
+                     <div class="content">
+                        <h3 class="title">Mileage</h3>
+                        <h4 class="sub_title">{{ car.mileage|intcomma }} km</h4>
+                     </div>
+                  </div>
+
+                  <!-- Transmission -->
+                  <div class="overview-card d-flex d-lg-block justify-content-start align-items-center flex-wrap mb-3 mb-lg-0">
+                     <div class="icon green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cog-icon lucide-cog"><path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="m17 20.66-1-1.73"/><path d="m17 3.34-1 1.73"/><path d="M2 12h2"/><path d="m20.66 17-1.73-1"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m3.34 7 1.73 1"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/></svg>
+                     </div>
+                     <div class="content">
+                        <h3 class="title">Transmission</h3>
+                        <h4 class="sub_title">{{ car.transmission }}</h4>
+                     </div>
+                  </div>
+
+                  <!-- Fuel -->
+                  <div class="overview-card d-flex d-lg-block justify-content-start align-items-center flex-wrap mb-3 mb-lg-0">
+                     <div class="icon blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-fuel-icon lucide-fuel"><line x1="3" x2="15" y1="22" y2="22"/><line x1="4" x2="14" y1="9" y2="9"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>
+                     </div>
+                     <div class="content">
+                        <h3 class="title">Fuel Type</h3>
+                        <h4 class="sub_title">{{ car.fuel }}</h4>
+                     </div>
+                  </div>
+
+                  <!-- Warranty -->
+                  <div class="overview-card d-flex d-lg-block justify-content-start align-items-center flex-wrap mb-3 mb-lg-0">
+                     <div class="icon blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+                     </div>
+                     <div class="content">
+                        <h3 class="title">Warranty</h3>
+                        <h4 class="sub_title">{{ car.warranty }}</h4>
+                     </div>
+                  </div>
+
+                  <!-- Cylinders -->
+                  <div class="overview-card d-flex d-lg-block justify-content-start align-items-center flex-wrap mb-3 mb-lg-0">
+                     <div class="icon blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car-icon lucide-car"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                     </div>
+                     <div class="content">
+                        <h3 class="title">Cylinders</h3>
+                        <h4 class="sub_title">{{ car.cylinders }}</h4>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- key features -->
+            <div class="car-features mb-4">
+               <div class="head mb-4 ps-2">
+                  <h2 class="title">Key Features</h2>
+               </div>
+               <div class="wrapper d-lg-flex justify-content-between flex-wrap">
+                  {% for feature in car.features_list %}
+                     {% if feature.strip %}
+                     <div class="feature mb-4">
+                        <span class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cog-icon lucide-cog"><path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="m17 20.66-1-1.73"/><path d="m17 3.34-1 1.73"/><path d="M2 12h2"/><path d="m20.66 17-1.73-1"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m3.34 7 1.73 1"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/></svg>
+                        </span>
+                        <h3 class="sub_title">{{ feature }}</h3>
+                     </div>
+                     {% endif %}
+                  {% endfor %}
+               </div>
+            </div>
+
+            <!-- about -->
+            <div class="about">
+               <div class="head mb-3">
+                  <h2 class="title">About</h2>
+               </div>
+               <div class="text">
+                  {{ car.about|linebreaks }}
+               </div>
+            </div>
+         </div>
+
+         <div class="car-reports mb-4">
+            <div class="wrapper d-lg-flex justify-content-center align-items-center flex-wrap">
+               <div class="image mb-4 m-lg-0"><img src="{% static 'images/inspection-report.avif' %}" alt="" class="img" id="report-img"></div>
+               <div class="content ps-lg-4">
+                  <div class="wrapper d-flex justify-content-between align-items-stretch flex-wrap mb-4">
+                     <div class="report mb-3">
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2-icon lucide-calendar-check-2"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="m16 20 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="sub_title mb-0">Exterior</h3>
+                     </div>
+
+                     <div class="report mb-3">
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2-icon lucide-calendar-check-2"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="m16 20 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="sub_title mb-0">Engine</h3>
+                     </div>
+
+                     <div class="report">
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2-icon lucide-calendar-check-2"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="m16 20 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="sub_title mb-0">Electricals</h3>
+                     </div>
+
+                     <div class="report">
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2-icon lucide-calendar-check-2"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="m16 20 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="sub_title mb-0">Suspension</h3>
+                     </div>
+                  </div>
+                  <div class="text ps-2 mb-2">
+                     Every car goes through three thorough inspections: when we buy it, after refurbishment, and before delivery. This ensures you get a used car in Dubai that looks and drives like new, backed by a free one-year warranty. For full transparency, you can check the final inspection report here.
+                  </div>
+                  <button class="btn" id="open-report">View Full Report ›</button>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+      <!-- desktop car info -->
+      <div id="info-wrapper" class="d-none d-lg-block">
+         <div class="car-info">
+            <div class="wrapper mb-4">
+               <div class="name-con d-flex justify-content-between align-items-center">
+                  <h2 class="name p-0 m-0">{{ car.name }}</h2><br>
+                  <div class="wishlist-btn" data-id="{{ car.id }}">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                  </div>
+               </div>
+               <h3 class="stock-no">Stock no: {{ car.stock_no }}</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h2 class="price o-0 m-0">USD {{ car.sale_price|intcomma }}</h2>
+               <h3 class="downpay m-0">USD {{ car.down_pay|intcomma }}/Month</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <div class="views-con d-flex align-items-center">
+                  <h5 class="views d-flex align-items-center m-0">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="var(--text-red)" stroke="var(--text-white)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                     <span class="view-no">&nbsp;13&nbsp;</span>
+                     People&nbsp;
+                  </h5>
+                  are viewing this right now
+               </div>
+            </div>
+            <div class="wrapper actions">
+               <button class="btn mb-3" id="book-drive">Book a test drive</button>
+               <div class="urls d-flex justify-content-between">
+                  <a href="" class="btn url" id="call">Call Us</a>
+                  <a href="" class="btn url" id="buy">Buy this Car</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </section>
+
+
+   <section id="faqs">
+      <div class="sec_head ps-2 pb-3"><h2 class="title">Frequently Asked Questions</h2></div>
+      <div class="faq_wrapper">
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">What types of used cars does Car Max Auto offer?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Car Max Auto offers a wide selection of vehicles, including sedans, SUVs, trucks, and hybrids, all suited for different needs and budgets. Whether you are looking for a reliable family car, a fuel-efficient commuter vehicle, or a rugged truck, we provide quality options backed by our trusted inspection process.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Are all the vehicles at Car Max Auto inspected before being sold?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, every vehicle sold by Car Max Auto undergoes a thorough multi-point inspection to ensure safety, performance, and reliability. Our goal is to give you peace of mind, knowing that your car has been carefully checked and meets high U.S. standards for roadworthiness.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Does Car Max Auto provide financing options for buyers in the USA?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Absolutely! We understand that buying a car can be a big investment, so Car Max Auto partners with multiple financing institutions to offer flexible payment plans. Whether you have good credit, bad credit, or no credit history, we work to find a financing solution that fits your needs.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Can I trade in my current vehicle at Car Max Auto?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, Car Max Auto accepts trade-ins, making it easy to upgrade to a newer car. Our team will evaluate your current vehicle, provide a fair market value offer, and apply that amount toward your next purchase, helping reduce your overall costs.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">How does Car Max Auto ensure fair pricing for used cars in the U.S.?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  We base our prices on nationwide market data, vehicle condition, mileage, and demand. At Car Max Auto, transparency is key—we provide upfront pricing without hidden fees. This means you can confidently shop, knowing you are getting a fair and competitive price.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Does Car Max Auto offer warranty or protection plans?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, many of our vehicles come with optional extended warranty and protection plans to give customers added security. These plans can cover mechanical breakdowns, roadside assistance, and even routine maintenance, ensuring you remain protected long after you drive off our lot.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Can I purchase a car from Car Max Auto completely online?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Yes, we provide a seamless online shopping experience for customers across the U.S. You can browse our inventory, apply for financing, and even arrange delivery or pickup—all from the comfort of your home. Buying a car has never been more convenient.
+               </p>
+            </div>
+         </div>
+
+         <div class="faq_card">
+            <div class="head d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">How do I know which car at Car Max Auto is best for my needs?</h3>
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </div>
+
+            <div class="body">
+               <p class="text">
+                  Our expert team is here to help you find the perfect car. We consider your budget, lifestyle, and driving preferences to recommend the best options. Whether you need a family SUV, a reliable daily commuter, or a work-ready truck, Car Max Auto ensures you drive away happy.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="contact">
+      <div class="contact_wrapper d-lg-flex justify-content-between">
+         <div class="info mb-lg-0">
+            <div class="wrapper mb-3">
+               <h3 class="title">Contact</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h3 class="phone">
+                  <span>Phone</span>
+                  <a href="tel:+13219262853" class="btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+                     +13219262853
+                  </a>
+               </h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h3 class="sub_title">USA Showroom</h3>
+               <span class="text">
+                  Showroom 17, 18 & 20, Al Asayel Street, Al Quoz Ind 1, Dubai, United Arab Emirates
+               </span>
+            </div>
+            <div class="wrapper mb-4 d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Working Hours</h3> <span class="hours">Sun-Sat : 9 AM - 10 PM</span>
+            </div>
+         </div>
+         <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.2173989588796!2d-79.89787268787936!3d40.470455252247746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834eda18a7f299f%3A0x87711d2910e91e8a!2s7147%20Churchland%20St%2C%20Pittsburgh%2C%20PA%2015206%2C%20USA!5e0!3m2!1sen!2scm!4v1756387161473!5m2!1sen!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         </div>
+      </div>
+   </section>
+
+   <section class="" id="full-report">
+      <i id="report-top" class=""></i>
+      <div class="report-wrapper">
+         <div class="head mb-4">
+            <h2 class="title">Detailed inspection report</h2>
+            <a href="#report-img" class="btn-close" id="btn-close">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </a>
+         </div>
+
+         <div class="inspection-list">
+            <div class="sec-head"><h3 class="title">Exterior</h3></div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Doors conditions</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Front left door</span>
+                     <span class="state">
+                        ✓ Passed
+                     </span>
+                  </div>
+
+                  <div class="list-item">
+                     <span class="value">Front right door</span>
+                     <span class="state">
+                        ✓ Passed
+                     </span>
+                  </div>
+
+                  <div class="list-item">
+                     <span class="value">Rear left door</span>
+                     <span class="state">
+                        ✓ Passed
+                     </span>
+                  </div>
+
+                  <div class="list-item">
+                     <span class="value">Rear right door</span>
+                     <span class="state">
+                        ✓ Passed
+                     </span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Fenders conditions</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Left fender</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right fender</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Quarter Panels Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Left Quarter Panel</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right Quarter Panel</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Rear Bumper Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Rear bumper</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Hood Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Hood</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Pillars Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Left A pillar</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right A pillar</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right A to B pillar</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Left A to B pillar</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right B to C pillar</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Left B pillar trim</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Running Board Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Left running board</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right running board</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Windshield Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Front windshield</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Rear windshield</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Structural Assessment</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Chassis condition</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Apron</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Boot floor</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Firewall condition</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Alloy Wheel/Rim</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Left Front Alloy/Rim</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right Front Alloy/Rim</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Left Rear Alloy/Rim</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right Rear Alloy/Rim</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Grill Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Grill condition</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Panel Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Panel condition</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+         <div class="inspection-list">
+            <div class="sec-head"><h3 class="title">Engine & Transmission</h3></div>
+            <div class="wrapper">
+               <h4 class="sub-title">Engine</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Engine body</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Engine performance</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Engine oil</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Exhaust system</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Radiator Condition</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Radiator Coolant</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Transmission Operation</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Gear shifting</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Drive axle</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Transmission fluid</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+
+         <div class="inspection-list">
+            <div class="sec-head"><h3 class="title">Electricals, Controls & Lights</h3></div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Keys</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Master Key</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Dashboard</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Instrument panel</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Controls</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Controls</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Infotainment Display</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Infotainment Display</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Music System</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Lights</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Headlight</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Tail Light Cluster</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">License Plate Light</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Interior Lights</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Air Conditioning</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">AC Cooling</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">AC Leaks</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">AC Switch</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Windows</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Power/Manual Windows</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="inspection-list">
+            <div class="sec-head"><h3 class="title">Tyres</h3></div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Tyres Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Left Front Tyre</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Left Rear Tyre</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right Front Tyre</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Right Rear Tyre</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Spare Tyre</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="inspection-list">
+            <div class="sec-head"><h3 class="title">Steering, Suspension & Brakes</h3></div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Brake System</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Parking Brake</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Brake Master Cylinder</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Brake Fluid</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Brake Disc And Pad</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Suspension</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Shock Absorbers</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Steering</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Steering Wheel</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="inspection-list">
+            <div class="sec-head"><h3 class="title">Interiors & Luggage</h3></div>
+
+            <div class="wrapper">
+               <h4 class="sub-title">Interior Condition</h4>
+               <div class="report-list">
+                  <div class="list-item">
+                     <span class="value">Dashboard And Instrument Panel</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Central Console</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Headliner</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Carpets</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Door Controls</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Seat Belts</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Head Rest</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Rear View Mirror</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Manual Seat Movement</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Grab Handle</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Glove Box</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Sunvisor</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+                  <div class="list-item">
+                     <span class="value">Tool Kit</span>
+                     <span class="state">✓ Passed</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="to-top mb-2">
+            <a href="#report-top" class="url">Back to top</a>
+         </div>
+      </div>
+   </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<!-- swiper js -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'js/swiper.js' %}"></script>
+<script src="{% static 'js/car_page.js' %}"></script>
+{% endblock %}
