@@ -1,3 +1,2 @@
-[services.web]
-command = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn carmaxauto.wsgi"
-port = 8000
+[deploy]
+start = {  cmd = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn carmaxauto.wsgi:application --bind 0.0.0.0:$PORT" }
