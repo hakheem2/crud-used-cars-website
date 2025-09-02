@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fefefe; margin:0; padding:0; color:#3a3a3a; }
+        .container { max-width:650px; margin:0 auto; border:1px solid #ddd; border-radius:8px; background:#fff; overflow:hidden; }
+        .header { background:#235583; color:#fff; text-align:center; padding:10px 20px; }
+        .header h1 { margin:0; font-size:18px; }
+        .content { padding:10px; }
+        .content span { font-weight: 600; }
+        .content h3 { color:#345B06; margin-top:25px; }
+        .order-details, .customer-info { width:100%; border-collapse:collapse; margin-top:15px; }
+        .order-details th, .order-details td,
+        .customer-info th, .customer-info td { padding:10px 5px; text-align:left; }
+        .order-details th, .customer-info th { font-weight: 500; }
+        .order-details th { background:#B1D8F7; }
+        .btn { display:inline-block; background:#235583; color:#fff; text-decoration:none; padding:10px 20px; border-radius:5px; margin-top:15px; }
+        .footer { padding:15px; text-align:center; font-size:12px; color:#999; background:#fefefe; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><h1>Order Confirmation</h1></div>
+        <div class="content">
+            <p>Hi {{ order.name }},</p>
+            <p>Thank you for your purchase! <br><br> Your order <span>ORD-{{ order.order_id }}</span> has been successfully placed.</p>
+
+            <!-- Customer Information -->
+            <h3>Customer Information</h3>
+            <table class="customer-info">
+                <tr>
+                    <th>Name: </th>
+                    <td>{{ order.name }}</td>
+                </tr>
+                <tr>
+                    <th>Email: </th>
+                    <td>{{ order.email }}</td>
+                </tr>
+                <tr>
+                    <th>Phone: </th>
+                    <td>{{ order.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Address: </th>
+                    <td>{{ order.address }}</td>
+                </tr>
+            </table>
+
+            <!-- Order Details -->
+            <h3>Order Details</h3>
+            <table class="order-details">
+                <thead>
+                    <tr><th>Car Name</th><th>Model</th><th>Year</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ order.car_name }}</td>
+                        <td>{{ order.car_model }}</td>
+                        <td>{{ order.car_year }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><span>Amount:</span> ${{ order.car_price }}</p>
+
+            <a href="{{ website_url }}" class="btn">Visit Our Website</a>
+        </div>
+        <div class="footer">&copy; {{ year }} CarMaxAuto. All rights reserved.</div>
+    </div>
+</body>
+</html>

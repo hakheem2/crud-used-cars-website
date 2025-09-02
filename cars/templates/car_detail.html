@@ -109,8 +109,8 @@
                <div class="views-con d-flex align-items-center">
                   <h5 class="views d-flex align-items-center m-0">
                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="var(--text-red)" stroke="var(--text-white)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-                     <span class="view-no">&nbsp;13&nbsp;</span>
-                     People&nbsp;
+                     <span class="view-no"></span>
+                     &nbsp;People&nbsp;
                   </h5>
                   are viewing this right now
                </div>
@@ -118,8 +118,8 @@
             <div class="wrapper actions">
                <button class="btn mb-3" id="book-drive">Book a test drive</button>
                <div class="urls d-flex justify-content-between">
-                  <a href="" class="btn url" id="call">Call Us</a>
-                  <a href="" class="btn url" id="buy">Buy this Car</a>
+                  <a href="tel:+13219262853" class="btn url" id="call">Call Us</a>
+                  <button href="" class="btn url buy" id="buy">Buy this Car</button>
                </div>
             </div>
          </div>
@@ -294,8 +294,8 @@
                <div class="views-con d-flex align-items-center">
                   <h5 class="views d-flex align-items-center m-0">
                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="var(--text-red)" stroke="var(--text-white)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-                     <span class="view-no">&nbsp;13&nbsp;</span>
-                     People&nbsp;
+                     <span class="view-no"></span>
+                     &nbsp;People&nbsp;
                   </h5>
                   are viewing this right now
                </div>
@@ -303,8 +303,8 @@
             <div class="wrapper actions">
                <button class="btn mb-3" id="book-drive">Book a test drive</button>
                <div class="urls d-flex justify-content-between">
-                  <a href="" class="btn url" id="call">Call Us</a>
-                  <a href="" class="btn url" id="buy">Buy this Car</a>
+                  <a href="tel:+13219262853" class="btn url" id="call">Call Us</a>
+                  <button class="btn url buy" id="buy">Buy this Car</button>
                </div>
             </div>
          </div>
@@ -451,6 +451,39 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.2173989588796!2d-79.89787268787936!3d40.470455252247746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834eda18a7f299f%3A0x87711d2910e91e8a!2s7147%20Churchland%20St%2C%20Pittsburgh%2C%20PA%2015206%2C%20USA!5e0!3m2!1sen!2scm!4v1756387161473!5m2!1sen!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
       </div>
+   </section>
+
+   <section id="order-form" class="{% if reopen_form %} open {% endif %}">
+      <form action="{% url 'cars:car_detail' slug=car.slug %}" method="POST" class="form">
+         {% csrf_token %}
+
+         {% if messages %}
+         <div class="messages mb-3">
+            {% for message in messages %}
+               <div class="text-danger" style="font: var(--text-md);">{{ message }}</div>
+            {% endfor %}
+         </div>
+         {% endif %}
+
+         <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control">
+         </div>
+         <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control">
+         </div>
+         <div class="mb-3">
+            <label>Phone</label>
+            <input type="text" name="phone" class="form-control">
+         </div>
+         <div class="mb-4">
+            <label>Address</label>
+            <input type="text" name="address" class="form-control">
+         </div>
+
+         <button type="submit" class="btn form-control">Submit</button>
+      </form>
    </section>
 
    <section class="" id="full-report">

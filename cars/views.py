@@ -1,6 +1,12 @@
-from django.shortcuts import get_object_or_404, render
-from .models import Car
 from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from django.urls import reverse
+
+from .models import Car
+from orders.models import Order
+from orders.utils import send_order_confirmation
+
 
 # Create your views here.
 def car_list(request):
@@ -63,9 +69,51 @@ def car_list_ajax(request):
     print('true')
     return render(request, 'car_list.html', context)
 
+
 def car_detail(request, slug):
     car = get_object_or_404(Car, slug=slug)
-    return render(request, "car_detail.html", {"car": car})
+    reopen_form = False
+
+    if request.method == "POST":
+        name = (request.POST.get("name") or "").strip()
+        email = (request.POST.get("email") or "").strip()
+        phone = (request.POST.get("phone") or "").strip()
+        address = (request.POST.get("address") or "").strip()
+
+        errors = []
+        if not name: errors.append("A name is required.")
+        if not email: errors.append("An email is required.")
+        if not phone: errors.append("A phone number is required.")
+        if not address: errors.append("An address is required.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            reopen_form = True
+        else:
+            order = Order.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                address=address,
+                car=car,
+                car_name=car.name,
+                car_price=car.sale_price,
+                car_model=car.model,
+                car_year=car.year,
+                stock_number=car.stock_no,
+            )
+
+            # Send email to customer AND yourself
+            send_order_confirmation(order)
+
+            messages.success(request, "Your order has been placed. We’ll contact you shortly.")
+            return redirect(reverse('orders:success') + f"?name={name}")
+
+    context = {'car': car, 'reopen_form': reopen_form}
+    return render(request, "car_detail.html", context)
+
+
 
 def toggle_wishlist(request):
     car_id = request.GET.get('car_id')
@@ -87,6 +135,7 @@ def toggle_wishlist(request):
     else:
         # No car_id provided => return current wishlist
         return JsonResponse({'success': True, 'wishlist': wishlist})
+
 
 def wishlist_view(request):
     wishlist_ids = request.session.get('wishlist', [])

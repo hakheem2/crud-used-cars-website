@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+
+<title>Order Success</title>
+
+<!-- custom css styles -->
+<style>
+    #success{
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    h2{
+        font: var(--title-sm);
+        font-size: 24px;
+        color: var(--bg-green);
+    }
+
+    p{
+        font: var(--title-xm);
+        font-size: 16px;
+        color: var(--text-dark);
+    }
+
+    .btn{
+        font: var(--title-xm);
+        font-size: 16px;
+        color: var(--bg-green);
+        text-decoration: underline;
+    }
+
+</style>
+{% endblock %}
+
+
+{% block body %} 
+<main id="body">
+   <section id="success">
+        <div class="wrapper text-center" style="width: fit-content;">
+            <h2 class="mb-2">Thank you, {{ order_name }}!</h2>
+            <p class="mb-2">Your order has been received. We’ll contact you shortly.</p>
+            <a href="{% url 'cars:car_list' %}" class="btn">back to car listing</a>
+        </div>
+   </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
