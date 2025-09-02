@@ -2,6 +2,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
 from datetime import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 def send_order_confirmation(order):
     subject = f"Order Confirmation - {order.order_id}"
@@ -18,26 +21,32 @@ def send_order_confirmation(order):
     )
 
     text_content = f"""
-        Hi {order.name},
-
-        Thank you for your purchase!
-        Your order ORD-{order.order_id} has been successfully placed.
-
-        Customer Information:
-        Name: {order.name}
-        Email: {order.email}
-        Phone: {order.phone}
-        Address: {order.address}
-
-        Order Details:
-        Car Name: {order.car_name}
-        Model: {order.car_model}
-        Year: {order.car_year}
-        Price: ${order.car_price}
-
-        Visit our website: https://carsmaxautos.com
-        """
+    Hi {order.name},
+    
+    Thank you for your purchase!
+    Your order ORD-{order.order_id} has been successfully placed.
+    
+    Customer Information:
+    Name: {order.name}
+    Email: {order.email}
+    Phone: {order.phone}
+    Address: {order.address}
+    
+    Order Details:
+    Car Name: {order.car_name}
+    Model: {order.car_model}
+    Year: {order.car_year}
+    Price: ${order.car_price}
+    
+    Visit our website: https://carsmaxautos.com
+    """
 
     msg = EmailMultiAlternatives(subject, text_content, from_email, to_emails)
     msg.attach_alternative(html_content, "text/html")
-    msg.send()
+
+    try:
+        msg.send(fail_silently=False)
+        logger.info(f"✅ Order confirmation email sent for order {order.order_id} to {order.email}")
+    except Exception as e:
+        # log the error instead of crashing the request
+        logger.error(f"❌ Failed to send order confirmation for {order.order_id}: {e}")
