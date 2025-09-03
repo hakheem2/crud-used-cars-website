@@ -1,73 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Order Confirmation</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #fefefe; margin:0; padding:0; color:#3a3a3a; }
-        .container { max-width:650px; margin:0 auto; border:1px solid #ddd; border-radius:8px; background:#fff; overflow:hidden; }
-        .header { background:#235583; color:#fff; text-align:center; padding:10px 20px; }
-        .header h1 { margin:0; font-size:18px; }
-        .content { padding:10px; }
-        .content span { font-weight: 600; }
-        .content h3 { color:#345B06; margin-top:25px; }
-        .order-details, .customer-info { width:100%; border-collapse:collapse; margin-top:15px; }
-        .order-details th, .order-details td,
-        .customer-info th, .customer-info td { padding:10px 5px; text-align:left; }
-        .order-details th, .customer-info th { font-weight: 500; }
-        .order-details th { background:#B1D8F7; }
-        .btn { display:inline-block; background:#235583; color:#fff; text-decoration:none; padding:10px 20px; border-radius:5px; margin-top:15px; }
-        .footer { padding:15px; text-align:center; font-size:12px; color:#999; background:#fefefe; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmation</title>
+<style>
+    body {
+        background-color: rgba(0, 0, 0, 0.9); margin: 0; padding: 5px;
+        font-family: Arial, sans-serif; color: #fafafa; letter-spacing: 0.2px; font-weight: 400; font-size: 16px; overflow-x: hidden;
+    }
+
+    *{
+        box-sizing: border-box;
+    }
+
+    .container{
+        width: 100%; box-sizing: border-box; margin: 10px auto; padding: 10px; background-color: #02161a; border-radius: 10px; padding-bottom: 30px; overflow-x: hidden;
+    }
+
+    .logo{
+        width: 100%; height: 70px; overflow-y: hidden; text-align: center; background-color: #0a363f; border-radius: 10px;
+    }
+    .logo .img{
+        width: 200px; height: 70px; margin: 0 auto; object-fit: cover; object-position: center;
+    }
+    .title{
+        width: 100%; margin: 0 auto; padding-top: 40px; padding-bottom: 30px; text-align: center; font-size: 20px; font-weight: 500px; border-bottom: 1.5px solid #09414d; text-transform: uppercase; margin-bottom: 30px;
+    }
+
+    .order{
+        width: 100%; margin: 0 auto; margin-bottom: 30px;
+    }
+    .order-id{
+        font-size: 16px; font-weight: 500;
+        margin: 0; padding: 0;
+    }
+    .date{
+        font-size: 13px; color: #0ca1be;
+    }
+
+    .text{
+        padding: 10px 0; margin-bottom: 30px; line-height: 24px;
+    }
+
+    .car-detail, .shipping-info{
+        width: 100%; padding: 10px; padding-bottom: 2px; border-radius: 10px; background-color: #0a363f; margin-bottom: 30px;
+    }
+    .sub-title{
+        font-weight: 600;
+    }
+    .car-card{
+        width: 100%; margin-top: 10px;
+    }
+    .car-card .img{
+        width: 100%; border-radius: 10px; object-fit: cover; object-position: center; height: 300px;
+    }
+    .info{
+        list-style: none; padding: 0;
+    }
+    .info .item{
+        color: #e1e2e4; padding: 10px 0; font-size: 16.5px; font-weight: 400;
+    }
+    .info .item .value{
+        font-weight: 500; color: #f1f1f1 !important; padding-left: 10px;
+    }
+    .url{
+        display: block; padding: 20px 0; width: 100%; border-radius: 10px; text-align: center; background-color: #0a363f; margin-bottom: 30px; color: #fafafa; text-decoration: none;
+    }
+    
+</style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><h1>Order Confirmation</h1></div>
-        <div class="content">
-            <p>Hi {{ order.name }},</p>
-            <p>Thank you for your purchase! <br><br> Your order <span>ORD-{{ order.order_id }}</span> has been successfully placed.</p>
-
-            <!-- Customer Information -->
-            <h3>Customer Information</h3>
-            <table class="customer-info">
-                <tr>
-                    <th>Name: </th>
-                    <td>{{ order.name }}</td>
-                </tr>
-                <tr>
-                    <th>Email: </th>
-                    <td>{{ order.email }}</td>
-                </tr>
-                <tr>
-                    <th>Phone: </th>
-                    <td>{{ order.phone }}</td>
-                </tr>
-                <tr>
-                    <th>Address: </th>
-                    <td>{{ order.address }}</td>
-                </tr>
-            </table>
-
-            <!-- Order Details -->
-            <h3>Order Details</h3>
-            <table class="order-details">
-                <thead>
-                    <tr><th>Car Name</th><th>Model</th><th>Year</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ order.car_name }}</td>
-                        <td>{{ order.car_model }}</td>
-                        <td>{{ order.car_year }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p style="padding-left: 5px; margin-top: 10px"><span>Amount:</span> USD {{ order.car_price }}</p>
-
-            <a href="{{ website_url }}" class="btn">Visit Our Website</a>
+        <div class="logo">
+            <a href="{{ website_url }}" class="nav_brand">
+               <img src="https://carsmaxautos.com/static/images/brand-logo-2.png" alt="" class="img">
+            </a>
         </div>
-        <div class="footer">&copy; {{ year }} CarMaxAuto. All rights reserved.</div>
+        <h1 class="title">Order Confirmation</h1>
+        <div class="order">
+            <h4 class="order-id">{{ order.order_id }}</h4>
+            <span class="date">{{ order.created_at|date:"F d, Y" }}</span>
+        </div>
+        <p class="text">
+            Hi, {{ order.name }} <br> <br>
+            Thank you for your purchase, this email comfirms your order. We will message you shortly with directives on the car purchase
+        </p>
+        <div class="car-detail">
+            <h3 class="sub-title">Order Details</h3>
+            <div class="car-card">
+                <img src="{{ order.car.image.url }}" alt="{{ order.car_name }}" class="img">
+                <ul class="info">
+                    <li class="item">Make: <span class="value">{{ order.car_name }}</span></li>
+                    <li class="item">Model: <span class="value">{{ order.car_model }}</span></li>
+                    <li class="item">Year: <span class="value">{{ order.car_year }}</span></li>
+                    <li class="item">Mileage: <span class="value">{{ order.car.mileage }} km</span></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="shipping-info">
+            <h3 class="sub-title">Shipping Info</h3>
+            <ul class="info">
+                <li class="item">Name: <span class="value">{{ order.name }}</span></li>
+                <li class="item">Phone: <span class="value">{{ order.phone }}</span></li>
+                <li class="item">Email: <span class="value">{{ order.email }}</span></li>
+                <li class="item">Address: <span class="value">{{ order.address }}</span></li>
+            </ul>
+        </div>
+
+        <a href="{{ website_url }}" class="url">Visit Website</a>
+
+        <div class="footer" style="text-align: center;">&copy; {{ year }} CarMaxAuto. All rights reserved.</div>
     </div>
 </body>
 </html>

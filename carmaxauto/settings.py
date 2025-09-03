@@ -26,8 +26,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", "iq&t49a6)*6gy=_6vt=!_4$onb=*#&aw9oe#dp9p^5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
-CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "carsmaxautos.com").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "https://carsmaxautos.com").split(",")
 
 # Application definition
 
@@ -93,6 +93,8 @@ if ENVIRONMENT == 'production':
             ssl_require=True
         )
     }
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = '/app/media'
 else:
     # Development: Use simple SQLite
     DATABASES = {
@@ -101,6 +103,8 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -157,6 +161,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True  # Required for port 465
-EMAIL_HOST_USER = 'info@carsmaxautos.com'
-EMAIL_HOST_PASSWORD = 'carmaxauto123.RV'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'support@carsmaxautos.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

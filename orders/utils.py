@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 def send_order_confirmation(order):
-    subject = f"Order Confirmation - {order.order_id}"
+    subject = f"Order Confirmation | {order.order_id}"
     from_email = settings.DEFAULT_FROM_EMAIL
     to_emails = [order.email, settings.DEFAULT_FROM_EMAIL]  # customer + yourself
 
