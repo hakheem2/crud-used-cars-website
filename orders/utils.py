@@ -50,3 +50,4 @@ def send_order_confirmation(order):
     except Exception as e:
         # log the error instead of crashing the request
         logger.error(f"❌ Failed to send order confirmation for {order.order_id}: {e}")
+

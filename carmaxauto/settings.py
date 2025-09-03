@@ -22,7 +22,7 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "iq&t49a6)*6gy=_6vt=!_4$onb=*#&aw9oe#dp9p^5d=f3lq0v")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
@@ -150,11 +150,12 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #email
+from django.core.mail import send_mail
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.hostinger.com"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True  # Required for port 465
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'info@carsmaxautos.com'
+EMAIL_HOST_PASSWORD = 'carmaxauto123.RV'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
