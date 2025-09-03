@@ -37,5 +37,9 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django-sitemap'),
 ]
 
-if settings.DEBUG:  # serve media files during development
+# Serve media files (uploads)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    # Railway production: still serve /media/ through Django
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
