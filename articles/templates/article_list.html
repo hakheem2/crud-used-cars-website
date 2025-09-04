@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %} 
+
+<title>About CarMaxAuto | Trusted Used Cars Marketplace</title>
+<meta name="description" content="Learn about CarMaxAuto, our mission to make buying and selling used cars simple, secure, and convenient. Discover our story and values today.">
+<meta name="keywords" content="about CarMaxAuto, company info, used cars marketplace, buy used cars, sell cars">
+<meta name="author" content="CarMaxAuto">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.carsmaxautos.com/about/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.carsmaxautos.com/about/">
+<meta property="og:title" content="About CarMaxAuto | Trusted Used Cars Marketplace">
+<meta property="og:description" content="Learn about CarMaxAuto, our mission to make buying and selling used cars simple, secure, and convenient.">
+<meta property="og:site_name" content="CarMaxAuto">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CarMaxAuto">
+<meta name="twitter:creator" content="@CarMaxAuto">
+<meta name="twitter:title" content="About CarMaxAuto | Trusted Used Cars Marketplace">
+<meta name="twitter:description" content="Learn about CarMaxAuto, our mission to make buying and selling used cars simple, secure, and convenient.">
+
+<meta property="og:image" content="https://carsmaxautos.com/static/images/og-image.png">
+<meta name="twitter:image" content="https://carsmaxautos.com/static/images/og-image.png">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "CarMaxAuto",
+"url": "https://www.carsmaxautos.com/",
+"logo": "https://www.carsmaxautos.com/images/logo.png",
+"sameAs": [
+  "https://www.facebook.com/CarMaxAuto",
+  "https://www.twitter.com/CarMaxAuto",
+  "https://www.linkedin.com/company/carmaxauto"
+]
+}
+</script>
+
+<!-- custom css styles -->
+<link rel="stylesheet" href="{% static 'css/about.css' %}" style="overflow-x: hidden; width: 100vw;">
+{% endblock %}
+
+
+{% block body %} 
+<main id="body">
+   <section id="banner">
+      <div class="head">
+         <h1 class="title ">About Car Max Auto: <br class="d-md-none"> USA trusted used car dealership</h1>
+      </div>
+      <div class="image"><img src="{% static 'images/showroom_center.png' %}" alt="" class="img"></div>
+   </section>
+   <section id="about_wrapper">
+      <div id="intro">
+         <div class="wrapper">
+            <p class="text">
+               At <strong>Car Max Auto</strong>, we specialize in <strong>used cars for sale in the USA</strong>, providing a transparent and hassle-free car buying experience. As a <strong>trusted used car dealership</strong>, we offer a wide range of <strong>certified pre-owned vehicles</strong> that combine quality and affordability. 
+               <br> <br>
+               Our <strong>exclusive deals on used cars</strong> include popular models from Ford, Toyota, Honda, and BMW, all <strong>thoroughly inspected and verified</strong> for your peace of mind. With <strong>nationwide locations</strong> and flexible <strong>car financing options</strong>, <strong>Car Max Auto</strong> makes it simple to find the perfect car at the best price.
+            </p>
+         </div>
+         <div class="image"><img src="{% static 'images/showroom.jpg' %}" alt="" class="img"></div>
+      </div>
+
+      <div id="whyus">
+         <div class="wrapper d-flex flex-wrap mb-5">
+            <div class="content order-lg-2">
+               <h2 class="title">Why Car Max Auto</h2>
+               <p class="text">
+                  <strong>Trusted by Thousands Across the USA</strong>
+                  <br>
+                  With a reputation built on <strong>trust</strong>, <strong>transparency</strong>, and <strong>customer satisfaction</strong>, <strong>Car Max Auto</strong> has become a leader in the <strong>used car market in the USA</strong>. Whether you’re looking to <a href="{% url 'cars:car_list' %}"><strong>buy a used car</strong></a> our expert team ensures you get the <strong>best market price</strong> with <strong>no hidden fees</strong>.
+               </p>
+            </div>
+            <div class="image order-lg-1"><img src="{% static 'images/showroom_front.png' %}" alt="" class="img"></div>
+         </div>
+         
+         <div class="wrapper mb-5">
+            <div class="text">
+               <strong>A Wide Range</strong> of <strong>Certified Pre-Owned Vehicles</strong>. Our <strong>used car showroom in USA</strong> offers a <strong>diverse selection</strong> of <strong>premium brands</strong>, including:
+            </div>
+            <div class="list">
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Ford</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Chevrolet</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Toyota</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Honda</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Nissan</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Jeep</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">GMC</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Dodge</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">BMW</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Mercedes-Benz</h3>
+               </div>
+
+               <div class="item d-flex align-items-center justify-content-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value">Tesla</h3>
+               </div>
+
+                <div class="item d-flex align-items-center justify-content-start">
+                  <h3 class="item_value"><i>and many more...</i></h3>
+               </div>
+            </div>
+            
+         </div>
+         <div class="wrapper mb-5">
+            <div class="text">
+               We buy and sell various car types, including <strong>, sedans, coupes, EVs, convertibles, and crossovers,</strong> ensuring that every customer finds a vehicle that fits their needs.
+            </div>
+
+            <div class="list">
+               <div class="text">
+                  <strong>What Makes Us Different?</strong> 
+               </div>
+               <div class="item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value"><strong>Fair and transparent pricing</strong> with no hidden fees</h3>
+               </div>
+
+               <div class="item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value"><strong>Customer-first approach</strong> with professional service</h3>
+               </div>
+
+               <div class="item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value"><strong>Certified used cars in Dubai</strong>, thoroughly inspected for quality</h3>
+               </div>
+
+               <div class="item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                  <h3 class="item_value"><strong>Reliable after-sales support</strong> for a stress-free experience</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="buy_from_us">
+         <div class="wrapper d-flex flex-wrap">
+            <div class="content order-lg-2">
+               <h2 class="title">Buying a Used Car from us – A Simple and Transparent Process</h2>
+               <p class="text">
+                  1- <strong>Browse Our Inventory</strong>: Start by exploring our <strong>extensive collection of certified pre-owned vehicles</strong> from top <strong>US and international car brands</strong>, including Ford, Chevrolet, Toyota, Honda, and Tesla.<br><br>
+
+                  2- <strong>Book Online or Visit Our Dealership</strong>: Reserve your vehicle online or schedule a <strong>test drive at our showroom</strong> to experience the quality and performance firsthand.<br><br>
+
+                  3- <strong>Drive Away with Confidence</strong>: Every car undergoes a <strong>rigorous inspection and certification process</strong> to ensure <strong>reliability, safety, and top performance</strong> for our customers.<br><br>
+
+                  4- <strong>Complete Transparency</strong>: Our team provides <strong>full pricing, vehicle history reports, and detailed specifications</strong> so you can make a fully informed decision when buying your next car.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section id="contact">
+      <div class="contact_wrapper d-lg-flex justify-content-between">
+         <div class="info mb-lg-0">
+            <div class="wrapper mb-3">
+               <h3 class="title">Contact</h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h3 class="phone">
+                  <span>Phone</span>
+                  <a href="tel:+13219262853" class="btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+                     +13219262853
+                  </a>
+               </h3>
+            </div>
+            <div class="wrapper mb-4">
+               <h3 class="sub_title">USA Showroom</h3>
+               <span class="text">
+                  Showroom 17, 18 & 20, Al Asayel Street, Al Quoz Ind 1, Dubai, United Arab Emirates
+               </span>
+            </div>
+            <div class="wrapper mb-4 d-flex justify-content-between align-items-center">
+               <h3 class="sub_title">Working Hours</h3> <span class="hours">Sun-Sat : 9 AM - 10 PM</span>
+            </div>
+         </div>
+         <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.2173989588796!2d-79.89787268787936!3d40.470455252247746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834eda18a7f299f%3A0x87711d2910e91e8a!2s7147%20Churchland%20St%2C%20Pittsburgh%2C%20PA%2015206%2C%20USA!5e0!3m2!1sen!2scm!4v1756387161473!5m2!1sen!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         </div>
+      </div>
+   </section>
+
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

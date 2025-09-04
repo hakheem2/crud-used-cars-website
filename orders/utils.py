@@ -1,15 +1,12 @@
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
 from django.conf import settings
+from django.template.loader import render_to_string
 from datetime import datetime
-import logging
-
-logger = logging.getLogger(__name__)
+import resend  # Make sure resend is installed
 
 def send_order_confirmation(order):
-    subject = f"Order Confirmation | {order.order_id}"
-    from_email = settings.DEFAULT_FROM_EMAIL
-    to_emails = [order.email]  # customer + yourself
+    """
+    Sends order confirmation email to the customer and sends a separate copy to yourself.
+    """
 
     html_content = render_to_string(
         'orders/order_template.html',
@@ -24,7 +21,7 @@ def send_order_confirmation(order):
     Hi {order.name},
     
     Thank you for your purchase!
-    Your order ORD-{order.order_id} has been successfully placed.
+    Your order ORD-{order.order_id} for {order.car_name} has been successfully placed.
     
     Customer Information:
     Name: {order.name}
@@ -41,13 +38,48 @@ def send_order_confirmation(order):
     Visit our website: https://carsmaxautos.com
     """
 
-    msg = EmailMultiAlternatives(subject, text_content, from_email, to_emails)
-    msg.attach_alternative(html_content, "text/html")
+    client = resend.Emails()
 
     try:
-        msg.send(fail_silently=True)
-        logger.info(f"✅ Order confirmation email sent for order {order.order_id} to {order.email}")
+        # Send to customer
+        client.send({  # type: ignore
+            "from": settings.DEFAULT_FROM_EMAIL,
+            "to": [order.email],
+            "subject": "Order Confirmation",
+            "html": html_content,
+            "text": text_content,
+        })
+        print("✅ Email sent:")
     except Exception as e:
-        # log the error instead of crashing the request
-        logger.error(f"❌ Failed to send order confirmation for {order.order_id}: {e}")
+        print("❌ Resend error:", e)
 
+
+    try:
+        # Send a separate copy to yourself
+        client.send({  # type: ignore
+            "from": settings.DEFAULT_FROM_EMAIL,
+            "to": [settings.DEFAULT_FROM_EMAIL],
+            "subject": "Order Confirmation",
+            "html": html_content,
+            "text": text_content,
+        })
+        print("✅ Email sent:")
+    except Exception as e:
+        print("❌ Resend error:", e)
+
+
+
+
+    # client = resend.Emails(api_key=settings.RESEND_API_KEY)
+    # # Send with Resend
+    # try:
+    #     response = resend.Emails.send({
+    #         "from": settings.DEFAULT_FROM_EMAIL,
+    #         "to": [order.email, settings.DEFAULT_FROM_EMAIL],
+    #         "subject": f"Order Confirmation",
+    #         "html": html_content,
+    #         "text": text_content,
+    #     })
+    #     print("✅ Email sent:", response)
+    # except Exception as e:
+    #     print("❌ Resend error:", e)

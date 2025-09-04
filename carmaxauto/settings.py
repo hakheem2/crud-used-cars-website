@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
@@ -151,12 +152,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #email
-from django.core.mail import send_mail
+import os
+import resend
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.hostinger.com'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True  # Required for port 465
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'contact@franklinusedrvs.com')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# Initialize Resend client
+RESEND_API_KEY = os.getenv('RESEND_API_KEY')
+resend.api_key = RESEND_API_KEY
+
+# Use your verified domain email
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+
