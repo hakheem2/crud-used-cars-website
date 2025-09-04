@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.urls import reverse
 
+from django.db import models
+from django.db.models import Q
 from .models import Car
 from orders.models import Order
 from orders.utils import send_order_confirmation
@@ -27,6 +29,7 @@ def car_list(request):
     }
     return render(request, 'cars.html', context)
 
+
 def car_list_ajax(request):
     # Get filter parameters from GET request
     makes = request.GET.getlist('make[]')
@@ -41,9 +44,14 @@ def car_list_ajax(request):
 
     # Apply filters
     if makes:
-        cars = cars.filter(make__in=makes)
+        # case-insensitive matching for makes
+        cars = cars.filter(make__in=[m.lower() for m in makes])
+        cars = cars.annotate(make_lower=models.functions.Lower('make')).filter(make_lower__in=[m.lower() for m in makes])
+
     if body_types:
-        cars = cars.filter(body_type__in=body_types)
+        # case-insensitive matching for body types
+        cars = cars.annotate(body_type_lower=models.functions.Lower('body_type')).filter(body_type_lower__in=[b.lower() for b in body_types])
+
     if max_price:
         cars = cars.filter(sale_price__lte=max_price)
     if max_mileage:
@@ -66,8 +74,8 @@ def car_list_ajax(request):
         cars = cars.order_by('mileage')
 
     context = {'cars': cars}
-    print('true')
     return render(request, 'car_list.html', context)
+
 
 
 def car_detail(request, slug):

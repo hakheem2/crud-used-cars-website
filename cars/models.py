@@ -1,7 +1,10 @@
 from django.db import models
-from django.utils.text import slugify
 from django.utils.timezone import now
-
+import random
+import string
+from django.utils.text import slugify
+from django.core.files.base import ContentFile
+import os
 
 class Car(models.Model):
     TRANSMISSION_CHOICES = [
@@ -93,6 +96,60 @@ class Car(models.Model):
     def __str__(self):
         return f"{self.make} {self.model} ({self.year})"
 
+    def duplicate(self):
+        """
+        Creates a full duplicate of this car instance, including all fields,
+        main_image, and all related CarImage objects.
+        """
+        # Generate a new unique stock number
+        new_stock_no = 'REF' + ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
+
+        # Generate a new slug based on name and stock_no
+        new_slug = slugify(f"{self.name}-{new_stock_no}")
+
+        # Duplicate main_image content if it exists
+        main_image_file = None
+        if self.main_image:
+            self.main_image.open()
+            main_image_content = self.main_image.read()
+            main_image_name = os.path.basename(self.main_image.name)
+            main_image_file = ContentFile(main_image_content, name=main_image_name)
+
+        # Create duplicate car with all fields
+        duplicate_car = Car.objects.create(
+            name=self.name,
+            slug=new_slug,
+            stock_no=new_stock_no,
+            make=self.make,
+            model=self.model,
+            year=self.year,
+            sale_price=self.sale_price,
+            full_price=getattr(self, 'full_price', None),
+            down_pay=self.down_pay,
+            mileage=self.mileage,
+            transmission=self.transmission,
+            fuel=self.fuel,
+            warranty=self.warranty,
+            spec=self.spec,
+            cylinders=self.cylinders,
+            body_type=self.body_type,
+            about=self.about,
+            key_features=self.key_features,
+            main_image=main_image_file,
+            available=self.available
+        )
+
+        # Duplicate all related CarImage objects
+        for img in self.gallery_images.all():  # adjust related_name if needed
+            if img.image:
+                img.image.open()
+                img_content = img.image.read()
+                img_name = os.path.basename(img.image.name)
+                duplicate_car.gallery_images.create(
+                    image=ContentFile(img_content, name=img_name)
+                )
+
+        return duplicate_car
 
 class CarImage(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="gallery_images")
