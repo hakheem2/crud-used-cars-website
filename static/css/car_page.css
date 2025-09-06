@@ -740,6 +740,185 @@
 }
 
 
+
+/* BOOK TEST DRICE MODAL STYLING */
+.custom-modal {
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.modal-title{
+	color: var(--text-dark);
+  	font: var(--title-xm);
+}
+
+.subtitle {
+  color: var(--text-dark);
+  font: var(--text-sm);
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.custom-input {
+	border: 1.3px solid var(--bg-gray-dark);
+	border-radius: 10px;
+	height: 50px;
+	padding-left: 15px;
+	font: var(--inter-title-sm);
+	color: var(--text-dark);
+	background-color: var(--bg-card);
+}
+
+h6.title {
+	color: var(--text-dark);
+  	font: var(--inter-title-md);
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.calendar-grid button {
+  height: 45px;
+  width: 45px;
+  border: none;
+  border-radius: 5px; /* square-ish look */
+  background: var(--bg-card);
+  font: var(--text-sm);
+  color: var(--text-dark);
+  transition: 0.2s;
+}
+
+.calendar-grid button:hover {
+  color: var(--text-red);
+  background-color: rgba(var(--rgb-red), 0.15);
+}
+
+.calendar-grid button:disabled {
+  background: var(--bg-gray);
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Today’s date (neutral border highlight) */
+
+/* Selected date (square red background) */
+.calendar-grid button.selected {
+  background: var(--bg-red-hover) !important;
+  color: var(--text-white) !important;
+  font-weight: bold;
+}
+
+/* Time slots */
+.time-grid {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow: scroll;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.time-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.time-grid button {
+	width: fit-content;
+	border: none;
+	background: var(--bg-card);
+	padding: 10px 15px;
+	border-radius: 8px;
+	font: var(--text-sm);
+	color: var(--text-dark);
+	transition: 0.2s;
+	white-space: nowrap;
+	flex: 0 0 auto;
+}
+
+.time-grid button:hover {
+	color: var(--text-red);
+	background-color: rgba(var(--rgb-red), 0.15);
+}
+
+.time-grid button.selected {
+  color: var(--text-white) !important;
+  background-color: var(--bg-red-hover);
+  font-weight: 600;
+}
+
+/* Submit button */
+.submit-btn {
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: var(--bg-red-hover) !important;
+}
+
+
+#successModal .modal-content h5{
+	color: var(--text-dark);
+  	font: var(--title-md);
+}
+
+#successModal .alert{
+	background-color: var(--bg-card);
+}
+
+#successModal .wrapper span{
+	font: var(--inter-title-md);
+	color: var(--text-dark);
+}
+
+#successModal .wrapper span#scheduled-time{
+	text-transform: uppercase;
+	font: var(--inter-title-md);
+	color: var(--text-dark);
+}
+
+#successModal small{
+	color: var(--text-light);
+  	font: var(--inter-title-sm);
+}
+
+#successModal p.text{
+	color: var(--text-dark);
+  	font: var(--inter-title-md);
+}
+
+#successModal .success-icon{
+	width: 70px;
+	height: 70px;
+ 	border-radius: 50%;
+	background-color: var(--bg-green);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#successModal .success-icon svg {
+  border-radius: 50%;
+}
+
+#successModal .btn{
+	display: block;
+	color: var(--text-white);
+  	font: var(--text-md);
+	width: fit-content;
+	padding: 10px 20px;
+	border-radius: 10px;
+	background: var(--bg-red);
+}
+
+
+
+
+
+
 @media (min-width:1024px){
 
 .page-location{

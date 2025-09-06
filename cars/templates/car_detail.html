@@ -116,7 +116,7 @@
                </div>
             </div>
             <div class="wrapper actions">
-               <button class="btn mb-3" id="book-drive">Book a test drive</button>
+               <button class="btn mb-3" id="book-drive" data-bs-toggle="modal" data-bs-target="#testDriveModal">Book a test drive</button>
                <div class="urls d-flex justify-content-between">
                   <a href="tel:+13219262853" class="btn url" id="call">Call Us</a>
                   <button href="" class="btn url buy" id="buy">Buy this Car</button>
@@ -301,7 +301,7 @@
                </div>
             </div>
             <div class="wrapper actions">
-               <button class="btn mb-3" id="book-drive">Book a test drive</button>
+               <button class="btn mb-3" id="book-drive" data-bs-toggle="modal" data-bs-target="#testDriveModal">Book a test drive</button>
                <div class="urls d-flex justify-content-between">
                   <a href="tel:+13219262853" class="btn url" id="call">Call Us</a>
                   <button class="btn url buy" id="buy">Buy this Car</button>
@@ -485,6 +485,84 @@
          <button type="submit" class="btn form-control">Submit</button>
       </form>
    </section>
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="testDriveModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content custom-modal">
+            <div class="modal-header border-0 mb-0 pb-0">
+               <h5 class="modal-title fw-bold">Let's Test Drive</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <div id="FormErrors" class="FormErrors" style="color: var(--text-red); font: var(--text-sm); margin-bottom: 10px;"></div>
+               <p class="subtitle">Visit our Showroom and Experience the Car of your dreams</p>
+               <form id="testDriveForm" data-url="{% url 'orders:book_test_drive' %}">
+                  {% csrf_token %}
+                  <!-- Hidden input for car id -->
+                  <input type="hidden" id="car-id" value="{{ car.id }}">
+                  <input type="hidden" id="selected-date" value="">
+                  <input type="hidden" id="selected-time" value="">
+                  <!-- Name -->
+                  <div class="mb-3">
+                     <input type="text" class="form-control custom-input" id="name" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-3">
+                     <input type="email" class="form-control custom-input" id="email" placeholder="Enter your email" required>
+                  </div>
+                  <!-- Phone -->
+                  <div class="mb-3">
+                     <input type="tel" class="form-control custom-input" id="phone" placeholder="Enter your mobile number" required>
+                  </div>
+                  <!-- Calendar -->
+                  <h6 class="title fw-bold d-block mb-2">Select Date</h6>
+                  <div id="calendar" class="calendar-grid mb-3"></div>
+                  <!-- Time Slots -->
+                  <h6 class="title fw-bold d-block mb-2">Select Time</h6>
+                  <div id="timeSlots" class="time-grid"></div>
+                  <!-- Submit -->
+                  <button type="submit" class="btn btn-danger w-100 mt-3 submit-btn">Submit</button>
+               </form>
+            </div>
+
+         </div>
+      </div>
+   </div>
+
+      <!-- Success Modal -->
+   <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content p-4 p-md-5 text-center">
+            <h5 class="modal-title mb-3">Test Drive Request Submitted</h5>
+
+            <!-- Check icon -->
+            <div class="d-flex justify-content-center mt-2 mb-4">
+               <div class="success-icon">
+                  <!-- Lucide check-circle (SVG) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+               </div>
+            </div>
+
+            <!-- Scheduled info -->
+            <div class="alert text-start">
+               <small class="">Your Test Drive is Scheduled for:</small><br>
+               <div class="wrapper d-flex justify-content-between align-items-center pt-2">
+                  <span class="fw-bold" id="scheduled-date">Saturday 6 September</span>
+                  <span class="text-danger fw-bold">at <span id="scheduled-time"> </span> </span>
+               </div>
+            </div>
+
+            <p class="mt-3 text">
+            Your test drive request has been submitted successfully!<br>
+            We will get in touch with you soon.
+            </p>
+
+            <button type="button" class="btn mt-2 mx-auto" data-bs-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+
 
    <section class="" id="full-report">
       <i id="report-top" class=""></i>

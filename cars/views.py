@@ -2,9 +2,12 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.urls import reverse
+from django.core.mail import send_mail
 
 from django.db import models
 from django.db.models import Q
+from django.views.decorators.http import require_POST
+
 from .models import Car
 from orders.models import Order
 from orders.utils import send_order_confirmation
@@ -122,7 +125,6 @@ def car_detail(request, slug):
     return render(request, "car_detail.html", context)
 
 
-
 def toggle_wishlist(request):
     car_id = request.GET.get('car_id')
     wishlist = request.session.get('wishlist', [])
@@ -149,5 +151,3 @@ def wishlist_view(request):
     wishlist_ids = request.session.get('wishlist', [])
     cars = Car.objects.filter(id__in=wishlist_ids)
     return render(request, 'wishlist.html', {'cars': cars})
-
-

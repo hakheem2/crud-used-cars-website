@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>New Test Drive Booking</title>
+	<style>
+		body { font-family: Arial, sans-serif; background: #0a363f; margin: 0; padding: 20px; }
+		.container { background: #fff; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; }
+		h2 { color: #e63946; margin-bottom: 10px; }
+		p { margin: 5px 0; }
+		.details { margin-top: 20px; }
+		
+		.shipping-info{
+        width: 100%; padding: 10px; padding-bottom: 2px; border-radius: 10px; background-color: #0a363f; margin-bottom: 30px;
+		}
+		.info{
+			list-style: none; padding: 0;
+		}
+		.info .item, .item h4{
+			color: #e1e2e4; padding: 10px 0; font-weight: 400;
+		}
+		.info .item .value{
+			font-weight: 500; color: #f1f1f1 !important; padding-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>New Test Drive Booking</h2>
+		<p>You have received a new test drive request. The details are below:</p>
+		<div class="details">
+			<ul class="info">
+				<li class="item">Car: <span class="value">{{ car.name }}</span></li>
+				<li class="item">Stock No: <span class="value">{{ car.stock_no }}</span></li>
+				<li class="item">Name: <span class="value">{{ name }}</span></li>
+				<li class="item">Phone: <span class="value">{{ phone }}</span></li>
+				<li class="item">Email: <span class="value">{{ email }}</span></li>
+				<li class="item">Scheduled on the: <span class="value">{{ date }}, at <span style="text-transform: uppercase;">{{ time }}</span> </span></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

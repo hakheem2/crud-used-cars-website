@@ -8,4 +8,5 @@ urlpatterns = [
     path('my-favourites/', views.wishlist_view, name="wishlist"),
     path('ajax/toggle-wishlist/', views.toggle_wishlist, name='toggle_wishlist'),
     path('<slug:slug>/', views.car_detail, name='car_detail'),
+
 ]

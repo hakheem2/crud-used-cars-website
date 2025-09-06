@@ -67,19 +67,3 @@ def send_order_confirmation(order):
     except Exception as e:
         print("❌ Resend error:", e)
 
-
-
-
-    # client = resend.Emails(api_key=settings.RESEND_API_KEY)
-    # # Send with Resend
-    # try:
-    #     response = resend.Emails.send({
-    #         "from": settings.DEFAULT_FROM_EMAIL,
-    #         "to": [order.email, settings.DEFAULT_FROM_EMAIL],
-    #         "subject": f"Order Confirmation",
-    #         "html": html_content,
-    #         "text": text_content,
-    #     })
-    #     print("✅ Email sent:", response)
-    # except Exception as e:
-    #     print("❌ Resend error:", e)
