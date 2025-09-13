@@ -44,7 +44,7 @@ def book_test_drive(request):
     try:
         resend.Emails.send({
             "from": "info@carsmaxautos.com",
-            "to": ['info@carsmaxautos.com', 'anyengmondesonmbaubeh@gmail.com'],
+            "to": ['info@carsmaxautos.com'],
             "subject": f"New Test Drive Booking - {car.name}",
             "html": html_content,
         })
