@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
       breakpoints: {
          0:   { slidesPerView: 1 },   // Mobile
          768: { slidesPerView: 2 },   // Tablet
-         992: { slidesPerView: 5 }    // Desktop / large
+         992: { slidesPerView: 4 }    // Desktop / large
       },
       on: {
          init() { console.log('Swiper initialized — slides:', this.slides.length); }

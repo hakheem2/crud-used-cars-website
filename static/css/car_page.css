@@ -78,6 +78,7 @@
 .swiper-slide { 
    display:flex; align-items:stretch;
 	border-radius: 20px;
+	height: auto;
 }
 
 .swiper-pagination{
