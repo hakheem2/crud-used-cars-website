@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
       breakpoints: {
          0:   { slidesPerView: 1 },   // Mobile
-         768: { slidesPerView: 2 },   // Tablet
-         992: { slidesPerView: 4 }    // Desktop / large
+         678: { slidesPerView: 2 },
+         992: { slidesPerView: 3 },   // Tablet
+         1124: { slidesPerView: 4 }    // Desktop / large
       },
       on: {
          init() { console.log('Swiper initialized — slides:', this.slides.length); }

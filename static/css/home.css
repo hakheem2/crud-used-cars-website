@@ -162,9 +162,9 @@
 	border-radius: 15px;
 }
 .swiper-slide { 
-    display:flex; align-items:stretch;
-	 border-radius: 15px;
-    height: auto;
+   display:flex; align-items:stretch;
+	border-radius: 15px;
+   height: auto;
 }
 
 .swiper-pagination{

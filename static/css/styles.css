@@ -532,6 +532,13 @@ textarea {
 }
 
 
+@media (min-width: 492px){
+	.product-card{
+		margin: 10px;
+	}
+}
+
+
 
 @media (min-width: 1024px) {
 	#header {
